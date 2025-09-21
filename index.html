@@ -145,54 +145,54 @@
         // Base de datos de preguntas (rellenar por el usuario)
         const preguntas = [
             {
-                pregunta: "Esta es la pregunta 1",
-                respuesta: "respuesta1",
-                pista: "Pista para la pregunta 1"
+                pregunta: "Como se llama el cangrejo verde de mi casa?",
+                respuesta: "Calras",
+                pista: "(🦞👳‍♀️)"
             },
             {
-                pregunta: "Esta es la pregunta 2",
-                respuesta: "respuesta2",
-                pista: "Pista para la pregunta 2"
+                pregunta: "Que me lanzaste en la playa?",
+                respuesta: "Patata",
+                pista: "(Una sola palabra)"
             },
             {
-                pregunta: "Esta es la pregunta 3",
-                respuesta: "respuesta3",
-                pista: "Pista para la pregunta 3"
+                pregunta: "Juego que has creado tu",
+                respuesta: "Monkey gaming",
+                pista: "(Mono)"
             },
             {
-                pregunta: "Esta es la pregunta 4",
-                respuesta: "respuesta4",
-                pista: "Pista para la pregunta 4"
+                pregunta: "¿Qué entidad invisible y absoluta, que existe sin depender de materia ni energía, fluye siempre en una sola dirección y marca el destino de todo lo que existe?",
+                respuesta: "Tiempo",
+                pista: "(Una palabra)"
             },
             {
-                pregunta: "Esta es la pregunta 5",
-                respuesta: "respuesta5",
-                pista: "Pista para la pregunta 5"
+                pregunta: "Que es lo que mas queria Eren",
+                respuesta: "Libertad",
+                pista: "🐚"
             },
             {
-                pregunta: "Esta es la pregunta 6",
-                respuesta: "respuesta6",
-                pista: "Pista para la pregunta 6"
+                pregunta: "¿Qué misterio une corazones distantes, desafía al tiempo y a la razón, y brilla incluso en la oscuridad más profunda?",
+                respuesta: "Amor",
+                pista: " (1 palabra)"
             },
             {
-                pregunta: "Esta es la pregunta 7",
-                respuesta: "respuesta7",
-                pista: "Pista para la pregunta 7"
+                pregunta: "Cual es el nombre del arma de la enamorada de Gehrman en Bloodborne?",
+                respuesta: "Rakuyo",
+                pista: "(1 palabra)"
             },
             {
-                pregunta: "Esta es la pregunta 8",
-                respuesta: "respuesta8",
-                pista: "Pista para la pregunta 8"
+                pregunta: "Quien fue el que 'invento' la Atlantida?",
+                respuesta: "Platon",
+                pista: "(o primero que la menciono)"
             },
             {
-                pregunta: "Esta es la pregunta 9",
-                respuesta: "respuesta9",
-                pista: "Pista para la pregunta 9"
+                pregunta: "Quis post finem mundi vivit et novam vitam hominibus affert? (Mythos Nordicus)",
+                respuesta: "Líf and Lífþrasir",
+                pista: "Ella and El"
             },
             {
-                pregunta: "Esta es la pregunta 10",
-                respuesta: "respuesta10",
-                pista: "Pista para la pregunta 10"
+                pregunta: "Esta es la pregunta 10, ultima, noche en que todo empezo",
+                respuesta: "19/03/2019",
+                pista: " DD/MM/YYYY"
             }
         ];
         
@@ -204,7 +204,7 @@
             const log = document.getElementById('log');
             const entry = document.createElement('div');
             entry.className = 'log-entry';
-            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            entry.textContent = [${new Date().toLocaleTimeString()}] ${message};
             log.appendChild(entry);
             log.scrollTop = log.scrollHeight;
         }
@@ -215,7 +215,7 @@
                 document.getElementById('question-container').innerHTML = `
                     <h2>VERIFICACIÓN COMPLETADA</h2>
                     <p>Acceso concedido al sistema.</p>
-                    <p>Contraseña cifrada: <strong>XUBBE_789</strong></p>
+                    <p>Contraseña cifrada: <strong>reconquista</strong></p>
                     <p>Pista de descifrado: "Clave: CIBER" (Cifrado Vigenère)</p>
                 `;
                 addLog("Verificación completada. Acceso concedido.");
@@ -233,7 +233,7 @@
             `;
             
             document.getElementById('respuesta').focus();
-            addLog(`Mostrando pregunta ${preguntaActual + 1}: ${p.pregunta.substring(0, 20)}...`);
+            addLog(Mostrando pregunta ${preguntaActual + 1}: ${p.pregunta.substring(0, 20)}...);
         }
         
         function verificarRespuesta() {
@@ -247,12 +247,12 @@
             } else {
                 vidas--;
                 actualizarVidas();
-                addLog(`Respuesta incorrecta. Vidas restantes: ${vidas}`);
+                addLog(Respuesta incorrecta. Vidas restantes: ${vidas});
                 
                 if (vidas <= 0) {
                     document.getElementById('question-container').innerHTML = `
                         <h2>ACCESO DENEGADO</h2>
-                        <p>Sistema bloqueado por múltiples intentos fallidos.</p>
+                        <p>Has bloqueado el sistema al acumular suficientes errores. Reiniciando....</p>
                         <button onclick="location.reload()">Reiniciar sistema</button>
                     `;
                     addLog("Sistema bloqueado. Demasiados intentos fallidos.");
@@ -267,9 +267,9 @@
             if (pistasUsadas < 3) {
                 pistasUsadas++;
                 const pista = document.getElementById('hint');
-                pista.textContent = `PISTA: ${preguntas[preguntaActual].pista}`;
+                pista.textContent = PISTA: ${preguntas[preguntaActual].pista};
                 pista.classList.add('show');
-                addLog(`Pista solicitada: ${preguntas[preguntaActual].pista.substring(0, 20)}...`);
+                addLog(Pista solicitada: ${preguntas[preguntaActual].pista.substring(0, 20)}...);
                 
                 setTimeout(() => {
                     pista.classList.remove('show');
@@ -286,11 +286,9 @@
             });
         }
         
-        // Iniciar el juego automáticamente al cargar la página
-        document.addEventListener('DOMContentLoaded', function() {
-            mostrarPregunta();
-            addLog("Sistema listo. Esperando entrada del usuario...");
-        });
+        // Iniciar el juego
+        mostrarPregunta();
+        addLog("Sistema listo. Esperando entrada del usuario...");
     </script>
 </body>
 </html>
