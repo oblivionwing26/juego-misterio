@@ -142,7 +142,7 @@
     </div>
 
     <script>
-        // Base de datos de preguntas (rellenar por el usuario)
+        // Base de datos de preguntas
         const preguntas = [
             {
                 pregunta: "Como se llama el cangrejo verde de mi casa?",
@@ -204,7 +204,8 @@
             const log = document.getElementById('log');
             const entry = document.createElement('div');
             entry.className = 'log-entry';
-            entry.textContent = [${new Date().toLocaleTimeString()}] ${message};
+            // Corrección: Usar comillas invertidas correctamente
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
             log.appendChild(entry);
             log.scrollTop = log.scrollHeight;
         }
@@ -233,7 +234,8 @@
             `;
             
             document.getElementById('respuesta').focus();
-            addLog(Mostrando pregunta ${preguntaActual + 1}: ${p.pregunta.substring(0, 20)}...);
+            // Corrección: Usar comillas invertidas correctamente
+            addLog(`Mostrando pregunta ${preguntaActual + 1}: ${p.pregunta.substring(0, 20)}...`);
         }
         
         function verificarRespuesta() {
@@ -247,7 +249,8 @@
             } else {
                 vidas--;
                 actualizarVidas();
-                addLog(Respuesta incorrecta. Vidas restantes: ${vidas});
+                // Corrección: Usar comillas invertidas correctamente
+                addLog(`Respuesta incorrecta. Vidas restantes: ${vidas}`);
                 
                 if (vidas <= 0) {
                     document.getElementById('question-container').innerHTML = `
@@ -267,9 +270,11 @@
             if (pistasUsadas < 3) {
                 pistasUsadas++;
                 const pista = document.getElementById('hint');
-                pista.textContent = PISTA: ${preguntas[preguntaActual].pista};
+                // Corrección: Usar comillas invertidas correctamente
+                pista.textContent = `PISTA: ${preguntas[preguntaActual].pista}`;
                 pista.classList.add('show');
-                addLog(Pista solicitada: ${preguntas[preguntaActual].pista.substring(0, 20)}...);
+                // Corrección: Usar comillas invertidas correctamente
+                addLog(`Pista solicitada: ${preguntas[preguntaActual].pista.substring(0, 20)}...`);
                 
                 setTimeout(() => {
                     pista.classList.remove('show');
@@ -286,9 +291,14 @@
             });
         }
         
-        // Iniciar el juego
-        mostrarPregunta();
-        addLog("Sistema listo. Esperando entrada del usuario...");
+        // Iniciar el juego cuando el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            mostrarPregunta();
+            addLog("Sistema listo. Esperando entrada del usuario...");
+        });
+    </script>
+</body>
+</html>
     </script>
 </body>
 </html>
