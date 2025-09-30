@@ -14,7 +14,7 @@
         body {
             background: #000;
             color: #0f0;
-            font-family: 'Source Code Pro', monospace;
+            font-family: 'Source+Code+Pro', monospace;
             padding: 20px;
             overflow-x: hidden;
         }
@@ -41,7 +41,7 @@
             background: rgba(0, 50, 0, 0.3);
         }
         
-        input, button {
+        input, button, textarea, select {
             background: #000;
             color: #0f0;
             border: 1px solid #0f0;
@@ -115,13 +115,441 @@
             0%, 50% { opacity: 1; }
             51%, 100% { opacity: 0; }
         }
+        
+        /* Estilos para los retos */
+        .reto-container {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .reto-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #ff0;
+        }
+        
+        .reto-description {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .game-area {
+            background: rgba(0, 30, 0, 0.5);
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 200px;
+            position: relative;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #333;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: #0f0;
+            width: 0%;
+            transition: width 0.5s;
+        }
+        
+        /* Estilos para el juego del dinosaurio */
+        .dino-game {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border: 1px solid #0f0;
+            background: linear-gradient(to bottom, #87CEEB 0%, #87CEEB 70%, #8FBC8F 70%, #228B22 100%);
+        }
+        
+        .dino {
+            position: absolute;
+            bottom: 60px;
+            left: 50px;
+            width: 50px;
+            height: 50px;
+            font-size: 40px;
+            line-height: 50px;
+            text-align: center;
+            transition: bottom 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 10;
+            transform: scaleX(-1); /* Girar para que mire a la derecha */
+        }
+        
+        .dino.jumping {
+            animation: jump 0.8s ease-out;
+        }
+        
+        @keyframes jump {
+            0% { bottom: 60px; }
+            50% { bottom: 160px; }
+            100% { bottom: 60px; }
+        }
+        
+        .dino.running {
+            animation: run 0.5s steps(2) infinite;
+        }
+        
+        @keyframes run {
+            0% { transform: scaleX(-1) translateX(0); }
+            100% { transform: scaleX(-1) translateX(10px); }
+        }
+        
+        .obstacle {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            font-size: 35px;
+            width: 35px;
+            height: 35px;
+            text-align: center;
+            z-index: 5;
+        }
+        
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background: #228B22;
+            z-index: 1;
+        }
+        
+        .mountain {
+            position: absolute;
+            bottom: 60px;
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid #2E8B57;
+            z-index: 2;
+        }
+        
+        .cloud {
+            position: absolute;
+            color: #fff;
+            font-size: 40px;
+            animation: cloudMove 20s linear infinite;
+            z-index: 3;
+        }
+        
+        @keyframes cloudMove {
+            from { right: -100px; }
+            to { right: 100%; }
+        }
+        
+        .score {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        
+        /* Estilos para el juego de memoria secuencial */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .memory-cell {
+            width: 60px;
+            height: 60px;
+            background: #222;
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+        
+        .memory-cell.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .memory-cell-front, .memory-cell-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+        
+        .memory-cell-front {
+            background: #222;
+            color: #0f0;
+        }
+        
+        .memory-cell-back {
+            background: #0a0;
+            color: #000;
+            transform: rotateY(180deg);
+        }
+        
+        .memory-cell.correct {
+            animation: pulse 0.5s;
+        }
+        
+        .memory-cell.wrong {
+            animation: shake 0.5s;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotateY(180deg); }
+            50% { transform: scale(1.2) rotateY(180deg); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0) rotateY(180deg); }
+            25% { transform: translateX(-5px) rotateY(180deg); }
+            75% { transform: translateX(5px) rotateY(180deg); }
+        }
+        
+        .round-info {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        
+        .sequence-display {
+            font-size: 1.3em;
+            margin: 15px 0;
+            min-height: 30px;
+        }
+        
+        /* Estilos para el juego de colores */
+        .color-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 450px;
+        }
+        
+        .color-button {
+            width: 120px;
+            height: 120px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .color-button.red {
+            background: #e74c3c;
+        }
+        
+        .color-button.green {
+            background: #2ecc71;
+        }
+        
+        .color-button.blue {
+            background: #3498db;
+        }
+        
+        .color-button.yellow {
+            background: #f1c40f;
+        }
+        
+        .color-button.purple {
+            background: #9b59b6;
+        }
+        
+        .color-button.orange {
+            background: #e67e22;
+        }
+        
+        .color-button.pink {
+            background: #e91e63;
+        }
+        
+        .color-button.teal {
+            background: #1abc9c;
+        }
+        
+        .color-button.indigo {
+            background: #3f51b5;
+        }
+        
+        .color-button.active {
+            filter: brightness(1.5);
+            transform: scale(0.95);
+            box-shadow: 0 0 20px rgba(255,255,255,0.8);
+        }
+        
+        .color-controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .color-info {
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        /* Estilos para el juego de descifrado */
+        .cipher-game {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: #000;
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .matrix-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #0f0, transparent),
+                radial-gradient(2px 2px at 40px 70px, #0a0, transparent),
+                radial-gradient(1px 1px at 50px 160px, #0f0, transparent),
+                radial-gradient(1px 1px at 130px 40px, #0a0, transparent),
+                radial-gradient(2px 2px at 80px 10px, #0f0, transparent);
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: matrix-fall 10s linear infinite;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        @keyframes matrix-fall {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 200px; }
+        }
+        
+        .cipher-container {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .cipher-level {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .cipher-challenge {
+            background: rgba(0, 20, 0, 0.7);
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1.1em;
+            word-break: break-all;
+        }
+        
+        .cipher-tools {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .tool-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .tool-row label {
+            min-width: 120px;
+            text-align: right;
+        }
+        
+        .tool-row input, .tool-row select {
+            flex: 1;
+        }
+        
+        .cipher-hint {
+            background: rgba(255, 255, 0, 0.1);
+            border: 1px solid #ff0;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #ff0;
+        }
+        
+        .cipher-result {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1.2em;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cipher-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .cipher-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .progress-text {
+            font-size: 0.9em;
+            color: #aaa;
+        }
+        
+        /* Panel de desarrollo */
+        .dev-panel {
+            margin-top: 20px;
+            text-align: center;
+            padding: 10px;
+            border: 1px dashed #0f0;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="terminal">
         <div class="header">
             <h1>ACCESO RESTRINGIDO - SISTEMA DE SEGURIDAD NIVEL 3</h1>
-            <p>Identificación requerida. 10 preguntas de verificación.</p>
+            <p>Identificación requerida. 9 preguntas + 4 retos de verificación.</p>
         </div>
         
         <div class="lives" id="lives">
@@ -138,6 +566,13 @@
         
         <div class="log" id="log">
             <div class="log-entry">[SYSTEM] Iniciando protocolo de verificación...</div>
+        </div>
+        
+        <!-- Panel de desarrollo -->
+        <div class="dev-panel">
+            <p>Panel de desarrollo:</p>
+            <input type="text" id="dev-code" placeholder="Introduce código">
+            <button onclick="verificarDevCode()">Avanzar</button>
         </div>
     </div>
 
@@ -187,46 +622,78 @@
             {
                 pregunta: "Quis post finem mundi vivit et novam vitam hominibus affert? (Mythos Nordicus)",
                 respuesta: "Líf and Lífþrasir",
-                pista: "Ella and El"
-            },
-            {
-                pregunta: "Esta es la pregunta 10, ultima, noche en que todo empezo",
-                respuesta: "19/03/2019",
-                pista: " DD/MM/YYYY"
+                pista: "Ella y El"
             }
         ];
+        
+        // Pregunta final (será el reto 3)
+        const preguntaFinal = {
+            pregunta: "Esta es la pregunta 10, ultima, noche en que todo empezo",
+            respuesta: "19/03/2019",
+            pista: " DD/MM/YYYY"
+        };
         
         let preguntaActual = 0;
         let vidas = 3;
         let pistasUsadas = 0;
+        let retoActual = 0;
+        let juegoActivo = false;
+        
+        // Variables para el juego del dinosaurio
+        let dinoScore = 0;
+        let dinoGameInterval;
+        let dinoObstacleInterval;
+        let dinoJumping = false;
+        let gameSpeed = 5;
+        let dinoRunning = false;
+        let obstacles = [];
+        let nextObstacleDistance = 400;
+        let doubleObstacleChance = 0.3;
+        
+        // Variables para el juego de memoria secuencial
+        let memoryRound = 1;
+        let memorySequence = [];
+        let memoryPlayerSequence = [];
+        let memoryShowing = false;
+        let memoryTimeout;
+        let memoryNumbers = [];
+        let memoryGrid = [];
+        
+        // Variables para el juego de colores
+        let colorSequence = [];
+        let colorPlayerSequence = [];
+        let colorShowing = false;
+        let colorRound = 1;
+        let colorButtons = [];
+        const colors = ['red', 'green', 'blue', 'yellow', 'purple', 'orange', 'pink', 'teal', 'indigo'];
+        
+        // Variables para el juego de descifrado
+        let cipherLevel = 1;
+        let cipherChallenges = [];
+        let currentChallenge = null;
+        let cipherAttempts = 0;
+        let maxCipherAttempts = 3;
         
         function addLog(message) {
             const log = document.getElementById('log');
             const entry = document.createElement('div');
             entry.className = 'log-entry';
-            // Corrección: Usar comillas invertidas correctamente
             entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
             log.appendChild(entry);
             log.scrollTop = log.scrollHeight;
         }
         
         function mostrarPregunta() {
+            // Si ya se respondieron todas las preguntas, mostrar los retos
             if (preguntaActual >= preguntas.length) {
-                // Juego completado
-                document.getElementById('question-container').innerHTML = `
-                    <h2>VERIFICACIÓN COMPLETADA</h2>
-                    <p>Acceso concedido al sistema.</p>
-                    <p>Contraseña cifrada: <strong>unetftdkxld</strong></p>
-                    <p>Pista de descifrado: "Clave: CIBER" (Cifrado Vigenère)</p>
-                `;
-                addLog("Verificación completada. Acceso concedido.");
+                mostrarRetos();
                 return;
             }
             
             const p = preguntas[preguntaActual];
             document.getElementById('question-container').innerHTML = `
                 <div class="question">
-                    <p><strong>PREGUNTA ${preguntaActual + 1}/10:</strong> ${p.pregunta}</p>
+                    <p><strong>PREGUNTA ${preguntaActual + 1}/9:</strong> ${p.pregunta}</p>
                     <input type="text" id="respuesta" placeholder="Introduce tu respuesta">
                     <button onclick="verificarRespuesta()">Verificar</button>
                     <button onclick="mostrarPista()">Usar pista (${3 - pistasUsadas} restantes)</button>
@@ -234,7 +701,6 @@
             `;
             
             document.getElementById('respuesta').focus();
-            // Corrección: Usar comillas invertidas correctamente
             addLog(`Mostrando pregunta ${preguntaActual + 1}: ${p.pregunta.substring(0, 20)}...`);
         }
         
@@ -249,7 +715,6 @@
             } else {
                 vidas--;
                 actualizarVidas();
-                // Corrección: Usar comillas invertidas correctamente
                 addLog(`Respuesta incorrecta. Vidas restantes: ${vidas}`);
                 
                 if (vidas <= 0) {
@@ -270,10 +735,8 @@
             if (pistasUsadas < 3) {
                 pistasUsadas++;
                 const pista = document.getElementById('hint');
-                // Corrección: Usar comillas invertidas correctamente
                 pista.textContent = `PISTA: ${preguntas[preguntaActual].pista}`;
                 pista.classList.add('show');
-                // Corrección: Usar comillas invertidas correctamente
                 addLog(`Pista solicitada: ${preguntas[preguntaActual].pista.substring(0, 20)}...`);
                 
                 setTimeout(() => {
@@ -291,14 +754,814 @@
             });
         }
         
+        function mostrarRetos() {
+            retoActual = 0;
+            mostrarRetoActual();
+        }
+        
+        function mostrarRetoActual() {
+            switch(retoActual) {
+                case 0:
+                    mostrarReto1();
+                    break;
+                case 1:
+                    mostrarReto2();
+                    break;
+                case 2:
+                    mostrarReto3();
+                    break;
+                case 3:
+                    mostrarReto4();
+                    break;
+                default:
+                    // Todos los retos completados
+                    mostrarCompletado();
+            }
+        }
+        
+        function mostrarReto1() {
+            document.getElementById('question-container').innerHTML = `
+                <div class="reto-container">
+                    <div class="reto-title">RETO 1: Escape del Dinosaurio</div>
+                    <div class="reto-description">
+                        <p>Alcanza 5000 puntos para superar este reto.</p>
+                        <p>Presiona ESPACIO para saltar los obstáculos.</p>
+                    </div>
+                    <div class="game-area">
+                        <div class="dino-game" id="dino-game">
+                            <div class="dino" id="dino">🦕</div>
+                            <div class="mountain" style="left: 200px;"></div>
+                            <div class="mountain" style="left: 400px; height: 80px; border-bottom-width: 80px;"></div>
+                            <div class="mountain" style="left: 600px; height: 60px; border-bottom-width: 60px;"></div>
+                            <div class="cloud" style="top: 30px; right: 100px;">☁️</div>
+                            <div class="cloud" style="top: 60px; right: 300px;">☁️</div>
+                            <div class="cloud" style="top: 40px; right: 500px;">☁️</div>
+                            <div class="ground"></div>
+                        </div>
+                        <div class="score">Puntos: <span id="dino-score">0</span> | Velocidad: <span id="game-speed">1</span>x</div>
+                        <button id="jump-btn" onclick="saltarDino()">Saltar (ESPACIO)</button>
+                        <div class="progress-bar">
+                            <div class="progress" id="progress1"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            iniciarJuegoDino();
+            addLog("Iniciando Reto 1: Escape del Dinosaurio");
+            
+            // Añadir evento de teclado
+            document.addEventListener('keydown', handleKeyDown);
+        }
+        
+        function handleKeyDown(e) {
+            if (retoActual === 0 && juegoActivo && e.code === 'Space') {
+                e.preventDefault();
+                saltarDino();
+            }
+        }
+        
+        function iniciarJuegoDino() {
+            dinoScore = 0;
+            gameSpeed = 5;
+            juegoActivo = true;
+            dinoRunning = true;
+            obstacles = [];
+            nextObstacleDistance = 400;
+            doubleObstacleChance = 0.3;
+            
+            document.getElementById('dino-score').textContent = dinoScore;
+            document.getElementById('game-speed').textContent = Math.floor(gameSpeed / 5);
+            
+            // Iniciar animación de correr
+            const dino = document.getElementById('dino');
+            dino.classList.add('running');
+            
+            // Crear primer obstáculo
+            crearObstaculo(800);
+            
+            // Game loop
+            dinoGameInterval = setInterval(() => {
+                if (!juegoActivo) return;
+                
+                // Mover obstáculos
+                for (let i = obstacles.length - 1; i >= 0; i--) {
+                    const obstacle = obstacles[i];
+                    obstacle.x -= gameSpeed;
+                    obstacle.element.style.right = (800 - obstacle.x) + 'px';
+                    
+                    // Eliminar obstáculos fuera de pantalla
+                    if (obstacle.x < -50) {
+                        obstacle.element.remove();
+                        obstacles.splice(i, 1);
+                        dinoScore += 100;
+                        document.getElementById('dino-score').textContent = dinoScore;
+                        updateProgress(1, dinoScore / 50);
+                        
+                        // Aumentar velocidad gradualmente
+                        if (dinoScore % 500 === 0 && gameSpeed < 12) {
+                            gameSpeed += 0.2;
+                            document.getElementById('game-speed').textContent = Math.floor(gameSpeed / 5);
+                        }
+                        
+                        // Aumentar dificultad gradualmente
+                        if (dinoScore % 1000 === 0) {
+                            doubleObstacleChance = Math.min(doubleObstacleChance + 0.05, 0.6);
+                        }
+                        
+                        if (dinoScore >= 5000) {
+                            completarReto1();
+                        }
+                    }
+                    
+                    // Verificar colisión
+                    checkCollision(obstacle);
+                }
+                
+                // Crear nuevos obstáculos
+                nextObstacleDistance -= gameSpeed;
+                if (nextObstacleDistance <= 0) {
+                    const lastObstacle = obstacles[obstacles.length - 1];
+                    const newX = lastObstacle ? lastObstacle.x + 300 : 800;
+                    
+                    crearObstaculo(newX);
+                    
+                    // Posibilidad de doble obstáculo
+                    if (Math.random() < doubleObstacleChance) {
+                        setTimeout(() => {
+                            crearObstaculo(newX + 150);
+                        }, 100);
+                    }
+                    
+                    nextObstacleDistance = 300 + Math.random() * 200;
+                }
+            }, 30);
+        }
+        
+        function crearObstaculo(x) {
+            const obstacle = document.createElement('div');
+            obstacle.className = 'obstacle';
+            obstacle.textContent = '🌳';
+            obstacle.style.right = (800 - x) + 'px';
+            document.getElementById('dino-game').appendChild(obstacle);
+            
+            obstacles.push({
+                element: obstacle,
+                x: x
+            });
+        }
+        
+        function checkCollision(obstacle) {
+            const dino = document.getElementById('dino');
+            const dinoRect = dino.getBoundingClientRect();
+            const obstacleRect = obstacle.element.getBoundingClientRect();
+            
+            // Ajustar la caja de colisión del dinosaurio según su estado
+            let dinoTop = dinoRect.top;
+            let dinoBottom = dinoRect.bottom;
+            let dinoLeft = dinoRect.left;
+            let dinoRight = dinoRect.right;
+            
+            // Si está saltando, ajustar la caja de colisión
+            if (dinoJumping) {
+                dinoTop += 10;
+                dinoBottom -= 10;
+            }
+            
+            // Verificar colisión con mayor precisión
+            if (
+                dinoRight > obstacleRect.left + 8 &&
+                dinoLeft < obstacleRect.right - 8 &&
+                dinoBottom > obstacleRect.top + 8 &&
+                dinoTop < obstacleRect.bottom - 8
+            ) {
+                // Colisión
+                vidas--;
+                actualizarVidas();
+                addLog(`Colisión detectada. Vidas restantes: ${vidas}`);
+                
+                // Efecto visual de colisión
+                obstacle.element.style.filter = 'brightness(2)';
+                setTimeout(() => {
+                    obstacle.element.style.filter = '';
+                }, 300);
+                
+                if (vidas <= 0) {
+                    finDelJuego();
+                } else {
+                    // Eliminar el obstáculo con el que colisionó
+                    obstacle.element.remove();
+                    const index = obstacles.indexOf(obstacle);
+                    if (index > -1) {
+                        obstacles.splice(index, 1);
+                    }
+                }
+            }
+        }
+        
+        function saltarDino() {
+            if (dinoJumping) return;
+            
+            dinoJumping = true;
+            dinoRunning = false;
+            const dino = document.getElementById('dino');
+            dino.classList.remove('running');
+            dino.classList.add('jumping');
+            
+            setTimeout(() => {
+                dino.classList.remove('jumping');
+                dinoJumping = false;
+                if (juegoActivo) {
+                    dinoRunning = true;
+                    dino.classList.add('running');
+                }
+            }, 800);
+        }
+        
+        function completarReto1() {
+            juegoActivo = false;
+            clearInterval(dinoGameInterval);
+            document.removeEventListener('keydown', handleKeyDown);
+            
+            // Limpiar obstáculos
+            obstacles.forEach(obstacle => {
+                obstacle.element.remove();
+            });
+            obstacles = [];
+            
+            const dino = document.getElementById('dino');
+            dino.classList.remove('running');
+            
+            addLog("Reto 1 completado. Puntuación alcanzada: 5000");
+            retoActual++;
+            setTimeout(() => {
+                mostrarRetoActual();
+            }, 2000);
+        }
+        
+        function mostrarReto2() {
+            document.getElementById('question-container').innerHTML = `
+                <div class="reto-container">
+                    <div class="reto-title">RETO 2: Memoria Secuencial</div>
+                    <div class="reto-description">
+                        <p>Observa la secuencia de números y luego pulsalos en orden ascendente.</p>
+                        <p>Cada ronda añade un número más. Debes completar 15 rondas.</p>
+                    </div>
+                    <div class="game-area">
+                        <div class="round-info">Ronda: <span id="memory-round">1</span> / 15</div>
+                        <div class="sequence-display" id="sequence-display">Preparando secuencia...</div>
+                        <div class="memory-grid" id="memory-grid">
+                            <!-- Las celdas se generarán aquí -->
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" id="progress2"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            iniciarJuegoMemoria();
+            addLog("Iniciando Reto 2: Memoria Secuencial");
+        }
+        
+        function iniciarJuegoMemoria() {
+            memoryRound = 1;
+            memorySequence = [];
+            memoryPlayerSequence = [];
+            memoryShowing = false;
+            
+            crearGridMemoria();
+            siguienteRondaMemoria();
+        }
+        
+        function crearGridMemoria() {
+            const grid = document.getElementById('memory-grid');
+            grid.innerHTML = '';
+            memoryGrid = [];
+            
+            // Crear 25 celdas (5x5)
+            for (let i = 0; i < 25; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'memory-cell';
+                cell.dataset.index = i;
+                
+                // Crear frente y dorso de la carta
+                const front = document.createElement('div');
+                front.className = 'memory-cell-front';
+                front.textContent = '?';
+                
+                const back = document.createElement('div');
+                back.className = 'memory-cell-back';
+                back.textContent = 'X'; // Por defecto, todas las celdas tienen X
+                
+                cell.appendChild(front);
+                cell.appendChild(back);
+                cell.addEventListener('click', () => pulsarCeldaMemoria(i));
+                grid.appendChild(cell);
+                memoryGrid.push(cell);
+            }
+        }
+        
+        function siguienteRondaMemoria() {
+            document.getElementById('memory-round').textContent = memoryRound;
+            updateProgress(2, (memoryRound - 1) / 15);
+            
+            // Añadir nuevo número a la secuencia
+            const nuevoNumero = memoryRound;
+            memorySequence.push(nuevoNumero);
+            
+            // Mostrar secuencia
+            mostrarSecuenciaMemoria();
+        }
+        
+        function mostrarSecuenciaMemoria() {
+            memoryShowing = true;
+            memoryPlayerSequence = [];
+            
+            const display = document.getElementById('sequence-display');
+            display.textContent = 'Observa la secuencia...';
+            
+            // Limpiar celdas (voltear todas)
+            memoryGrid.forEach(cell => {
+                cell.classList.remove('flipped');
+            });
+            
+            // Mostrar números uno por uno
+            let delay = 0;
+            const positions = [];
+            
+            // Generar posiciones aleatorias para cada número
+            for (let i = 0; i < memorySequence.length; i++) {
+                let pos;
+                do {
+                    pos = Math.floor(Math.random() * 25);
+                } while (positions.includes(pos));
+                positions.push(pos);
+            }
+            
+            // Establecer los números en las celdas correspondientes
+            memorySequence.forEach((num, index) => {
+                const cell = memoryGrid[positions[index]];
+                const back = cell.querySelector('.memory-cell-back');
+                back.textContent = num;
+            });
+            
+            // Mostrar cada número
+            memorySequence.forEach((num, index) => {
+                memoryTimeout = setTimeout(() => {
+                    const cell = memoryGrid[positions[index]];
+                    cell.classList.add('flipped');
+                    
+                    // Ocultar después de un tiempo
+                    setTimeout(() => {
+                        cell.classList.remove('flipped');
+                        if (index === memorySequence.length - 1) {
+                            // Último número, permitir al jugador
+                            setTimeout(() => {
+                                display.textContent = '¡Ahora pulsa los números en orden!';
+                                memoryShowing = false;
+                            }, 500);
+                        }
+                    }, 1000);
+                }, delay);
+                
+                delay += 1500; // 1.5 segundos entre números
+            });
+        }
+        
+        function pulsarCeldaMemoria(index) {
+            if (memoryShowing) return;
+            
+            const cell = memoryGrid[index];
+            const back = cell.querySelector('.memory-cell-back');
+            const expectedNum = memoryPlayerSequence.length + 1;
+            
+            // Voltear la celda
+            cell.classList.add('flipped');
+            
+            // Verificar si es correcto
+            if (back.textContent === expectedNum.toString()) {
+                // Correcto
+                cell.classList.add('correct');
+                memoryPlayerSequence.push(expectedNum);
+                
+                setTimeout(() => {
+                    cell.classList.remove('correct');
+                    
+                    // Verificar si completó la ronda
+                    if (memoryPlayerSequence.length === memorySequence.length) {
+                        // Ronda completada
+                        if (memoryRound >= 15) {
+                            completarReto2();
+                        } else {
+                            memoryRound++;
+                            setTimeout(() => {
+                                siguienteRondaMemoria();
+                            }, 1000);
+                        }
+                    }
+                }, 500);
+            } else {
+                // Incorrecto
+                cell.classList.add('wrong');
+                vidas--;
+                actualizarVidas();
+                addLog(`Secuencia incorrecta. Vidas restantes: ${vidas}`);
+                
+                setTimeout(() => {
+                    cell.classList.remove('wrong');
+                    
+                    if (vidas <= 0) {
+                        finDelJuego();
+                    } else {
+                        // Reiniciar ronda
+                        setTimeout(() => {
+                            mostrarSecuenciaMemoria();
+                        }, 1000);
+                    }
+                }, 500);
+            }
+        }
+        
+        function completarReto2() {
+            clearTimeout(memoryTimeout);
+            addLog("Reto 2 completado. Todas las rondas superadas.");
+            retoActual++;
+            setTimeout(() => {
+                mostrarRetoActual();
+            }, 2000);
+        }
+        
+        function mostrarReto3() {
+            const p = preguntaFinal;
+            document.getElementById('question-container').innerHTML = `
+                <div class="reto-container">
+                    <div class="reto-title">RETO 3: Pregunta Final</div>
+                    <div class="question">
+                        <p><strong>PREGUNTA FINAL:</strong> ${p.pregunta}</p>
+                        <input type="text" id="respuesta-final" placeholder="Introduce tu respuesta">
+                        <button onclick="verificarRespuestaFinal()">Verificar</button>
+                        <button onclick="mostrarPistaFinal()">Usar pista (${3 - pistasUsadas} restantes)</button>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('respuesta-final').focus();
+            addLog("Iniciando Reto 3: Pregunta Final");
+        }
+        
+        function verificarRespuestaFinal() {
+            const respuesta = document.getElementById('respuesta-final').value.toLowerCase().trim();
+            const correcta = preguntaFinal.respuesta.toLowerCase();
+            
+            if (respuesta === correcta) {
+                addLog("Respuesta correcta. Reto final completado.");
+                retoActual++;
+                setTimeout(() => {
+                    mostrarRetoActual();
+                }, 2000);
+            } else {
+                vidas--;
+                actualizarVidas();
+                addLog(`Respuesta incorrecta. Vidas restantes: ${vidas}`);
+                
+                if (vidas <= 0) {
+                    finDelJuego();
+                } else {
+                    document.getElementById('respuesta-final').value = '';
+                    document.getElementById('respuesta-final').focus();
+                }
+            }
+        }
+        
+        function mostrarPistaFinal() {
+            if (pistasUsadas < 3) {
+                pistasUsadas++;
+                const pista = document.getElementById('hint');
+                pista.textContent = `PISTA: ${preguntaFinal.pista}`;
+                pista.classList.add('show');
+                addLog(`Pista solicitada: ${preguntaFinal.pista.substring(0, 20)}...`);
+                
+                setTimeout(() => {
+                    pista.classList.remove('show');
+                }, 10000);
+            }
+        }
+        
+        function mostrarReto4() {
+            document.getElementById('question-container').innerHTML = `
+                <div class="reto-container">
+                    <div class="reto-title">RETO 4: Descifrado de Códigos Secuenciales</div>
+                    <div class="reto-description">
+                        <p>Descifra los mensajes cifrados para superar este reto.</p>
+                        <p>Usa las herramientas proporcionadas y las pistas para encontrar la solución.</p>
+                    </div>
+                    <div class="game-area">
+                        <div class="cipher-game" id="cipher-game">
+                            <div class="matrix-bg"></div>
+                            <div class="cipher-container">
+                                <div class="cipher-level">
+                                    <h3>NIVEL ${cipherLevel} DE 3</h3>
+                                </div>
+                                
+                                <div class="cipher-info">
+                                    <div>Intentos: <span id="cipher-attempts">${cipherAttempts}</span>/${maxCipherAttempts}</div>
+                                    <div class="progress-text">Progreso: ${cipherLevel - 1}/3</div>
+                                </div>
+                                
+                                <div class="cipher-challenge" id="cipher-challenge">
+                                    Cargando desafío...
+                                </div>
+                                
+                                <div class="cipher-hint" id="cipher-hint">
+                                    <!-- Las pistas se cargarán aquí -->
+                                </div>
+                                
+                                <div class="cipher-tools">
+                                    <div class="tool-row">
+                                        <label>Desplazamiento:</label>
+                                        <input type="range" id="caesar-shift" min="1" max="25" value="3">
+                                        <span id="shift-value">3</span>
+                                    </div>
+                                    
+                                    <div class="tool-row">
+                                        <label>Clave:</label>
+                                        <input type="text" id="substitution-key" value="QWERTYUIOPASDFGHJKLZXCVBNM">
+                                    </div>
+                                    
+                                    <div class="tool-row">
+                                        <label>Clave Vigenère:</label>
+                                        <input type="text" id="vigenere-key" value="CLAVE">
+                                    </div>
+                                </div>
+                                
+                                <div class="cipher-result" id="cipher-result">
+                                    <!-- El resultado se mostrará aquí -->
+                                </div>
+                                
+                                <div class="cipher-controls">
+                                    <button onclick="descifrarCesar()">Descifrar César</button>
+                                    <button onclick="descifrarSustitucion()">Descifrar Sustitución</button>
+                                    <button onclick="descifrarVigenere()">Descifrar Vigenère</button>
+                                    <button onclick="verificarDescifrado()">Verificar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" id="progress4"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            iniciarDescifrado();
+            addLog("Iniciando Reto 4: Descifrado de Códigos Secuenciales");
+        }
+        
+        function iniciarDescifrado() {
+            cipherLevel = 1;
+            cipherAttempts = 0;
+            
+            // Definir los desafíos
+            cipherChallenges = [
+                {
+                    type: "caesar",
+                    message: "FRGHU ODWLRQ GH FODVVLRQ",
+                    hint: "El cifrado César desplaza cada letra un número fijo de posiciones en el alfabeto.",
+                    answer: "CRUCITO POR LA VICTORIA"
+                },
+                {
+                    type: "substitution",
+                    message: "ZITKXO KX RQKXN XO CQXKX",
+                    hint: "El cifrado por sustitución usa un alfabeto clave para reemplazar las letras originales.",
+                    key: "QWERTYUIOPASDFGHJKLZXCVBNM",
+                    answer: "MISTERIO EN EL LABORATORIO"
+                },
+                {
+                    type: "vigenere",
+                    message: "VWBPYB ZN YHMFYB QBPQBP",
+                    hint: "El cifrado Vigenère usa una palabra clave para aplicar múltiples desplazamientos de César.",
+                    key: "MATRIX",
+                    answer: "SECRETO DE LA MATRIX"
+                }
+            ];
+            
+            // Actualizar deslizador
+            const shiftSlider = document.getElementById('caesar-shift');
+            const shiftValue = document.getElementById('shift-value');
+            shiftSlider.addEventListener('input', () => {
+                shiftValue.textContent = shiftSlider.value;
+            });
+            
+            // Mostrar primer desafío
+            mostrarDesafio();
+        }
+        
+        function mostrarDesafio() {
+            currentChallenge = cipherChallenges[cipherLevel - 1];
+            cipherAttempts = 0;
+            
+            document.getElementById('cipher-attempts').textContent = cipherAttempts;
+            document.getElementById('cipher-challenge').textContent = currentChallenge.message;
+            document.getElementById('cipher-hint').innerHTML = `<strong>PISTA:</strong> ${currentChallenge.hint}`;
+            document.getElementById('cipher-result').textContent = '';
+            
+            // Configurar herramientas según el tipo
+            if (currentChallenge.type === 'caesar') {
+                document.getElementById('caesar-shift').style.display = 'block';
+                document.getElementById('substitution-key').style.display = 'none';
+                document.getElementById('vigenere-key').style.display = 'none';
+            } else if (currentChallenge.type === 'substitution') {
+                document.getElementById('caesar-shift').style.display = 'none';
+                document.getElementById('substitution-key').style.display = 'block';
+                document.getElementById('substitution-key').value = currentChallenge.key;
+                document.getElementById('vigenere-key').style.display = 'none';
+            } else if (currentChallenge.type === 'vigenere') {
+                document.getElementById('caesar-shift').style.display = 'none';
+                document.getElementById('substitution-key').style.display = 'none';
+                document.getElementById('vigenere-key').style.display = 'block';
+                document.getElementById('vigenere-key').value = currentChallenge.key;
+            }
+            
+            updateProgress(4, (cipherLevel - 1) / 3);
+        }
+        
+        function descifrarCesar() {
+            const shift = parseInt(document.getElementById('caesar-shift').value);
+            const mensaje = currentChallenge.message;
+            let resultado = '';
+            
+            for (let i = 0; i < mensaje.length; i++) {
+                const char = mensaje[i];
+                if (char === ' ') {
+                    resultado += ' ';
+                } else {
+                    const code = char.charCodeAt(0) - 65;
+                    const newCode = (code - shift + 26) % 26;
+                    resultado += String.fromCharCode(newCode + 65);
+                }
+            }
+            
+            document.getElementById('cipher-result').textContent = resultado;
+            addLog(`Descifrado César con desplazamiento ${shift}: ${resultado.substring(0, 20)}...`);
+        }
+        
+        function descifrarSustitucion() {
+            const key = document.getElementById('substitution-key').value.toUpperCase();
+            const mensaje = currentChallenge.message;
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let resultado = '';
+            
+            for (let i = 0; i < mensaje.length; i++) {
+                const char = mensaje[i];
+                if (char === ' ') {
+                    resultado += ' ';
+                } else {
+                    const index = alphabet.indexOf(char);
+                    if (index !== -1) {
+                        resultado += alphabet[(index + 13) % 26]; // Invertir el alfabeto
+                    } else {
+                        resultado += char;
+                    }
+                }
+            }
+            
+            document.getElementById('cipher-result').textContent = resultado;
+            addLog(`Descifrado por sustitución: ${resultado.substring(0, 20)}...`);
+        }
+        
+        function descifrarVigenere() {
+            const key = document.getElementById('vigenere-key').value.toUpperCase();
+            const mensaje = currentChallenge.message;
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let resultado = '';
+            let keyIndex = 0;
+            
+            for (let i = 0; i < mensaje.length; i++) {
+                const char = mensaje[i];
+                if (char === ' ') {
+                    resultado += ' ';
+                } else {
+                    const charCode = alphabet.indexOf(char);
+                    const keyCode = alphabet.indexOf(key[keyIndex % key.length]);
+                    const newCode = (charCode - keyCode + 26) % 26;
+                    resultado += alphabet[newCode];
+                    keyIndex++;
+                }
+            }
+            
+            document.getElementById('cipher-result').textContent = resultado;
+            addLog(`Descifrado Vigenère con clave "${key}": ${resultado.substring(0, 20)}...`);
+        }
+        
+        function verificarDescifrado() {
+            const resultado = document.getElementById('cipher-result').textContent.toUpperCase();
+            
+            if (resultado === currentChallenge.answer) {
+                addLog(`¡Descifrado correcto! Mensaje: ${currentChallenge.answer}`);
+                
+                if (cipherLevel >= 3) {
+                    completarReto4();
+                } else {
+                    cipherLevel++;
+                    setTimeout(() => {
+                        mostrarDesafio();
+                    }, 1500);
+                }
+            } else {
+                cipherAttempts++;
+                document.getElementById('cipher-attempts').textContent = cipherAttempts;
+                
+                if (cipherAttempts >= maxCipherAttempts) {
+                    vidas--;
+                    actualizarVidas();
+                    addLog(`Máximo de intentos alcanzado. Vidas restantes: ${vidas}`);
+                    
+                    if (vidas <= 0) {
+                        finDelJuego();
+                    } else {
+                        setTimeout(() => {
+                            mostrarDesafio();
+                        }, 1000);
+                    }
+                } else {
+                    addLog(`Descifrado incorrecto. Intentos restantes: ${maxCipherAttempts - cipherAttempts}`);
+                }
+            }
+        }
+        
+        function completarReto4() {
+            addLog("Reto 4 completado. Todos los códigos descifrados.");
+            retoActual++;
+            setTimeout(() => {
+                mostrarRetoActual();
+            }, 2000);
+        }
+        
+        function updateProgress(reto, porcentaje) {
+            const progress = document.getElementById(`progress${reto}`);
+            if (progress) {
+                progress.style.width = `${porcentaje * 100}%`;
+            }
+        }
+        
+        function mostrarCompletado() {
+            document.getElementById('question-container').innerHTML = `
+                <h2>VERIFICACIÓN COMPLETADA</h2>
+                <p>Acceso concedido al sistema.</p>
+                <p>Contraseña cifrada: <strong>reconquista</strong></p>
+                <p>Pista de descifrado: "Clave: CIBER" (Cifrado Vigenère)</p>
+            `;
+            addLog("Verificación completada. Acceso concedido.");
+        }
+        
+        function finDelJuego() {
+            juegoActivo = false;
+            clearInterval(dinoGameInterval);
+            clearTimeout(memoryTimeout);
+            document.removeEventListener('keydown', handleKeyDown);
+            
+            document.getElementById('question-container').innerHTML = `
+                <h2>ACCESO DENEGADO</h2>
+                <p>Has bloqueado el sistema al acumular suficientes errores. Reiniciando....</p>
+                <button onclick="location.reload()">Reiniciar sistema</button>
+            `;
+            addLog("Sistema bloqueado. Demasiados intentos fallidos.");
+        }
+        
+        // Función para verificar el código de desarrollo
+        function verificarDevCode() {
+            const code = document.getElementById('dev-code').value;
+            if (code === '5659448') {
+                addLog("Código de desarrollo aceptado. Avanzando al siguiente paso...");
+                
+                // Si estamos en las preguntas, avanzar a la siguiente pregunta
+                if (preguntaActual < preguntas.length) {
+                    preguntaActual++;
+                    mostrarPregunta();
+                } 
+                // Si estamos en los retos, avanzar al siguiente reto
+                else if (retoActual < 4) {
+                    retoActual++;
+                    mostrarRetoActual();
+                }
+                // Si ya completamos todo, mostrar completado
+                else {
+                    mostrarCompletado();
+                }
+                
+                // Limpiar el campo de código
+                document.getElementById('dev-code').value = '';
+            } else {
+                addLog("Código de desarrollo incorrecto.");
+            }
+        }
+        
         // Iniciar el juego cuando el DOM esté completamente cargado
         document.addEventListener('DOMContentLoaded', function() {
             mostrarPregunta();
             addLog("Sistema listo. Esperando entrada del usuario...");
         });
-    </script>
-</body>
-</html>
     </script>
 </body>
 </html>
