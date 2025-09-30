@@ -330,154 +330,147 @@
             min-height: 30px;
         }
         
-        /* Estilos para el juego de colores */
-        .color-container {
+        /* Estilos para el juego de lógica binaria */
+        .binary-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 20px;
         }
         
-        .color-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            max-width: 450px;
+        .binary-operation {
+            font-size: 1.8em;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(0, 30, 0, 0.7);
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            font-family: 'Source Code Pro', monospace;
         }
         
-        .color-button {
-            width: 120px;
-            height: 120px;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #000;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-        
-        .color-button.red {
-            background: #e74c3c;
-        }
-        
-        .color-button.green {
-            background: #2ecc71;
-        }
-        
-        .color-button.blue {
-            background: #3498db;
-        }
-        
-        .color-button.yellow {
-            background: #f1c40f;
-        }
-        
-        .color-button.purple {
-            background: #9b59b6;
-        }
-        
-        .color-button.orange {
-            background: #e67e22;
-        }
-        
-        .color-button.pink {
-            background: #e91e63;
-        }
-        
-        .color-button.teal {
-            background: #1abc9c;
-        }
-        
-        .color-button.indigo {
-            background: #3f51b5;
-        }
-        
-        .color-button.active {
-            filter: brightness(1.5);
-            transform: scale(0.95);
-            box-shadow: 0 0 20px rgba(255,255,255,0.8);
-        }
-        
-        .color-controls {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .color-info {
+        .binary-input {
+            font-size: 1.5em;
+            width: 200px;
             text-align: center;
+        }
+        
+        .binary-hint {
+            font-style: italic;
+            color: #ff0;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+        
+        .binary-level {
+            font-size: 1.2em;
             margin: 10px 0;
         }
         
-        /* Estilos para el juego de descifrado */
-        .cipher-game {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            background: #000;
-            border: 1px solid #0f0;
-            border-radius: 5px;
-            overflow: hidden;
+        .binary-attempts {
+            font-size: 1em;
+            margin: 5px 0;
+            color: #aaa;
         }
         
-        .matrix-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(2px 2px at 20px 30px, #0f0, transparent),
-                radial-gradient(2px 2px at 40px 70px, #0a0, transparent),
-                radial-gradient(1px 1px at 50px 160px, #0f0, transparent),
-                radial-gradient(1px 1px at 130px 40px, #0a0, transparent),
-                radial-gradient(2px 2px at 80px 10px, #0f0, transparent);
-            background-repeat: repeat;
-            background-size: 200px 200px;
-            animation: matrix-fall 10s linear infinite;
-            opacity: 0.1;
-            z-index: 1;
-        }
-        
-        @keyframes matrix-fall {
-            0% { background-position: 0 0; }
-            100% { background-position: 0 200px; }
-        }
-        
-        .cipher-container {
-            position: relative;
-            z-index: 2;
-            padding: 20px;
-            height: 100%;
+        /* Estilos para el juego de esteganografía */
+        .stego-container {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
         
-        .cipher-level {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .cipher-challenge {
-            background: rgba(0, 20, 0, 0.7);
+        .stego-text {
+            background: rgba(0, 30, 0, 0.7);
             border: 1px solid #0f0;
             border-radius: 5px;
             padding: 15px;
-            margin-bottom: 20px;
+            width: 100%;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
             font-family: 'Source Code Pro', monospace;
-            font-size: 1.1em;
+            line-height: 1.6;
+            font-size: 1em;
+        }
+        
+        .stego-hint {
+            background: rgba(255, 255, 0, 0.1);
+            border: 1px solid #ff0;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            font-style: italic;
+            color: #ff0;
+        }
+        
+        .stego-input {
+            width: 300px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+        
+        .stego-tools {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .stego-tool {
+            padding: 8px 12px;
+            background: rgba(0, 50, 0, 0.5);
+            border: 1px solid #0f0;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .stego-tool:hover {
+            background: rgba(0, 100, 0, 0.5);
+            box-shadow: 0 0 5px #0f0;
+        }
+        
+        .stego-colors {
+            display: flex;
+            gap: 5px;
+            margin: 15px 0;
+            justify-content: center;
+        }
+        
+        .color-box {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #0f0;
+            border-radius: 3px;
+        }
+        
+        /* Estilos para la capa final de seguridad */
+        .final-security {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .security-text {
+            background: rgba(0, 30, 0, 0.7);
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            padding: 15px;
+            width: 100%;
+            font-family: 'Source Code Pro', monospace;
+            line-height: 1.6;
+            font-size: 1em;
             word-break: break-all;
         }
         
-        .cipher-tools {
+        .security-tools {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            margin-bottom: 20px;
+            width: 100%;
         }
         
         .tool-row {
@@ -495,44 +488,27 @@
             flex: 1;
         }
         
-        .cipher-hint {
+        .book-excerpt {
+            background: rgba(0, 20, 0, 0.5);
+            border: 1px dashed #0f0;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .security-hint {
             background: rgba(255, 255, 0, 0.1);
             border: 1px solid #ff0;
             border-radius: 5px;
             padding: 10px;
-            margin-bottom: 20px;
+            margin: 10px 0;
             font-style: italic;
             color: #ff0;
-        }
-        
-        .cipher-result {
-            background: rgba(0, 255, 0, 0.1);
-            border: 1px solid #0f0;
-            border-radius: 5px;
-            padding: 15px;
-            font-family: 'Source Code Pro', monospace;
-            font-size: 1.2em;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .cipher-controls {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        
-        .cipher-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-        }
-        
-        .progress-text {
-            font-size: 0.9em;
-            color: #aaa;
         }
         
         /* Panel de desarrollo */
@@ -549,7 +525,7 @@
     <div class="terminal">
         <div class="header">
             <h1>ACCESO RESTRINGIDO - SISTEMA DE SEGURIDAD NIVEL 3</h1>
-            <p>Identificación requerida. 9 preguntas + 4 retos de verificación.</p>
+            <p>Identificación requerida. 9 preguntas + 5 retos de verificación.</p>
         </div>
         
         <div class="lives" id="lives">
@@ -659,20 +635,28 @@
         let memoryNumbers = [];
         let memoryGrid = [];
         
-        // Variables para el juego de colores
-        let colorSequence = [];
-        let colorPlayerSequence = [];
-        let colorShowing = false;
-        let colorRound = 1;
-        let colorButtons = [];
-        const colors = ['red', 'green', 'blue', 'yellow', 'purple', 'orange', 'pink', 'teal', 'indigo'];
+        // Variables para el juego de lógica binaria
+        let binaryLevel = 1;
+        let binaryAttempts = 0;
+        let maxBinaryAttempts = 3;
+        let currentBinaryOperation = null;
+        let binaryAnswer = null;
         
-        // Variables para el juego de descifrado
-        let cipherLevel = 1;
-        let cipherChallenges = [];
-        let currentChallenge = null;
-        let cipherAttempts = 0;
-        let maxCipherAttempts = 3;
+        // Variables para el juego de esteganografía
+        let stegoAttempts = 0;
+        let maxStegoAttempts = 3;
+        let stegoMessage = "";
+        let stegoText = "";
+        let stegoRevealed = false;
+        let stegoBinary = "";
+        let stegoColors = [];
+        
+        // Variables para la capa final de seguridad
+        let securityStep = 1;
+        let securityAttempts = 0;
+        let maxSecurityAttempts = 3;
+        let securityMessage = "";
+        let securityKey = "";
         
         function addLog(message) {
             const log = document.getElementById('log');
@@ -772,6 +756,12 @@
                     break;
                 case 3:
                     mostrarReto4();
+                    break;
+                case 4:
+                    mostrarReto5();
+                    break;
+                case 5:
+                    mostrarCapaFinal();
                     break;
                 default:
                     // Todos los retos completados
@@ -1249,230 +1239,142 @@
         }
         
         function mostrarReto4() {
+            binaryLevel = 1;
+            binaryAttempts = 0;
+            stegoRevealed = false;
+            
             document.getElementById('question-container').innerHTML = `
                 <div class="reto-container">
-                    <div class="reto-title">RETO 4: Descifrado de Códigos Secuenciales</div>
+                    <div class="reto-title">RETO 4: Lógica Binaria</div>
                     <div class="reto-description">
-                        <p>Descifra los mensajes cifrados para superar este reto.</p>
-                        <p>Usa las herramientas proporcionadas y las pistas para encontrar la solución.</p>
+                        <p>Resuelve las operaciones lógicas binarias para superar este reto.</p>
+                        <p>Debes completar 5 niveles de dificultad creciente.</p>
                     </div>
                     <div class="game-area">
-                        <div class="cipher-game" id="cipher-game">
-                            <div class="matrix-bg"></div>
-                            <div class="cipher-container">
-                                <div class="cipher-level">
-                                    <h3>NIVEL ${cipherLevel} DE 3</h3>
-                                </div>
-                                
-                                <div class="cipher-info">
-                                    <div>Intentos: <span id="cipher-attempts">${cipherAttempts}</span>/${maxCipherAttempts}</div>
-                                    <div class="progress-text">Progreso: ${cipherLevel - 1}/3</div>
-                                </div>
-                                
-                                <div class="cipher-challenge" id="cipher-challenge">
-                                    Cargando desafío...
-                                </div>
-                                
-                                <div class="cipher-hint" id="cipher-hint">
-                                    <!-- Las pistas se cargarán aquí -->
-                                </div>
-                                
-                                <div class="cipher-tools">
-                                    <div class="tool-row">
-                                        <label>Desplazamiento:</label>
-                                        <input type="range" id="caesar-shift" min="1" max="25" value="3">
-                                        <span id="shift-value">3</span>
-                                    </div>
-                                    
-                                    <div class="tool-row">
-                                        <label>Clave:</label>
-                                        <input type="text" id="substitution-key" value="QWERTYUIOPASDFGHJKLZXCVBNM">
-                                    </div>
-                                    
-                                    <div class="tool-row">
-                                        <label>Clave Vigenère:</label>
-                                        <input type="text" id="vigenere-key" value="CLAVE">
-                                    </div>
-                                </div>
-                                
-                                <div class="cipher-result" id="cipher-result">
-                                    <!-- El resultado se mostrará aquí -->
-                                </div>
-                                
-                                <div class="cipher-controls">
-                                    <button onclick="descifrarCesar()">Descifrar César</button>
-                                    <button onclick="descifrarSustitucion()">Descifrar Sustitución</button>
-                                    <button onclick="descifrarVigenere()">Descifrar Vigenère</button>
-                                    <button onclick="verificarDescifrado()">Verificar</button>
-                                </div>
+                        <div class="binary-container">
+                            <div class="binary-level">Nivel: <span id="binary-level">1</span> / 5</div>
+                            <div class="binary-attempts">Intentos: <span id="binary-attempts">0</span> / 3</div>
+                            <div class="binary-operation" id="binary-operation">Cargando operación...</div>
+                            <div class="binary-hint" id="binary-hint"></div>
+                            <input type="text" id="binary-answer" class="binary-input" placeholder="Respuesta binaria">
+                            <button onclick="verificarRespuestaBinaria()">Verificar</button>
+                            <div class="progress-bar">
+                                <div class="progress" id="progress4"></div>
                             </div>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress" id="progress4"></div>
                         </div>
                     </div>
                 </div>
             `;
             
-            iniciarDescifrado();
-            addLog("Iniciando Reto 4: Descifrado de Códigos Secuenciales");
+            generarOperacionBinaria();
+            addLog("Iniciando Reto 4: Lógica Binaria");
         }
         
-        function iniciarDescifrado() {
-            cipherLevel = 1;
-            cipherAttempts = 0;
+        function generarOperacionBinaria() {
+            document.getElementById('binary-level').textContent = binaryLevel;
+            document.getElementById('binary-attempts').textContent = binaryAttempts;
             
-            // Definir los desafíos
-            cipherChallenges = [
-                {
-                    type: "caesar",
-                    message: "FRGHU ODWLRQ GH FODVVLRQ",
-                    hint: "El cifrado César desplaza cada letra un número fijo de posiciones en el alfabeto.",
-                    answer: "CRUCITO POR LA VICTORIA"
-                },
-                {
-                    type: "substitution",
-                    message: "ZITKXO KX RQKXN XO CQXKX",
-                    hint: "El cifrado por sustitución usa un alfabeto clave para reemplazar las letras originales.",
-                    key: "QWERTYUIOPASDFGHJKLZXCVBNM",
-                    answer: "MISTERIO EN EL LABORATORIO"
-                },
-                {
-                    type: "vigenere",
-                    message: "VWBPYB ZN YHMFYB QBPQBP",
-                    hint: "El cifrado Vigenère usa una palabra clave para aplicar múltiples desplazamientos de César.",
-                    key: "MATRIX",
-                    answer: "SECRETO DE LA MATRIX"
-                }
-            ];
+            let operacion, respuesta, pista;
             
-            // Actualizar deslizador
-            const shiftSlider = document.getElementById('caesar-shift');
-            const shiftValue = document.getElementById('shift-value');
-            shiftSlider.addEventListener('input', () => {
-                shiftValue.textContent = shiftSlider.value;
-            });
-            
-            // Mostrar primer desafío
-            mostrarDesafio();
-        }
-        
-        function mostrarDesafio() {
-            currentChallenge = cipherChallenges[cipherLevel - 1];
-            cipherAttempts = 0;
-            
-            document.getElementById('cipher-attempts').textContent = cipherAttempts;
-            document.getElementById('cipher-challenge').textContent = currentChallenge.message;
-            document.getElementById('cipher-hint').innerHTML = `<strong>PISTA:</strong> ${currentChallenge.hint}`;
-            document.getElementById('cipher-result').textContent = '';
-            
-            // Configurar herramientas según el tipo
-            if (currentChallenge.type === 'caesar') {
-                document.getElementById('caesar-shift').style.display = 'block';
-                document.getElementById('substitution-key').style.display = 'none';
-                document.getElementById('vigenere-key').style.display = 'none';
-            } else if (currentChallenge.type === 'substitution') {
-                document.getElementById('caesar-shift').style.display = 'none';
-                document.getElementById('substitution-key').style.display = 'block';
-                document.getElementById('substitution-key').value = currentChallenge.key;
-                document.getElementById('vigenere-key').style.display = 'none';
-            } else if (currentChallenge.type === 'vigenere') {
-                document.getElementById('caesar-shift').style.display = 'none';
-                document.getElementById('substitution-key').style.display = 'none';
-                document.getElementById('vigenere-key').style.display = 'block';
-                document.getElementById('vigenere-key').value = currentChallenge.key;
-            }
-            
-            updateProgress(4, (cipherLevel - 1) / 3);
-        }
-        
-        function descifrarCesar() {
-            const shift = parseInt(document.getElementById('caesar-shift').value);
-            const mensaje = currentChallenge.message;
-            let resultado = '';
-            
-            for (let i = 0; i < mensaje.length; i++) {
-                const char = mensaje[i];
-                if (char === ' ') {
-                    resultado += ' ';
-                } else {
-                    const code = char.charCodeAt(0) - 65;
-                    const newCode = (code - shift + 26) % 26;
-                    resultado += String.fromCharCode(newCode + 65);
-                }
-            }
-            
-            document.getElementById('cipher-result').textContent = resultado;
-            addLog(`Descifrado César con desplazamiento ${shift}: ${resultado.substring(0, 20)}...`);
-        }
-        
-        function descifrarSustitucion() {
-            const key = document.getElementById('substitution-key').value.toUpperCase();
-            const mensaje = currentChallenge.message;
-            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            let resultado = '';
-            
-            for (let i = 0; i < mensaje.length; i++) {
-                const char = mensaje[i];
-                if (char === ' ') {
-                    resultado += ' ';
-                } else {
-                    const index = alphabet.indexOf(char);
-                    if (index !== -1) {
-                        resultado += alphabet[(index + 13) % 26]; // Invertir el alfabeto
+            // Generar operación según el nivel
+            switch(binaryLevel) {
+                case 1:
+                    // Operación simple: AND/OR/XOR entre dos números
+                    const num1 = Math.floor(Math.random() * 8) + 1;
+                    const num2 = Math.floor(Math.random() * 8) + 1;
+                    const ops = ['AND', 'OR', 'XOR'];
+                    const op = ops[Math.floor(Math.random() * ops.length)];
+                    
+                    operacion = `${num1.toString(2).padStart(3, '0')} ${op} ${num2.toString(2).padStart(3, '0')}`;
+                    
+                    if (op === 'AND') {
+                        respuesta = (num1 & num2).toString(2).padStart(3, '0');
+                    } else if (op === 'OR') {
+                        respuesta = (num1 | num2).toString(2).padStart(3, '0');
                     } else {
-                        resultado += char;
+                        respuesta = (num1 ^ num2).toString(2).padStart(3, '0');
                     }
-                }
+                    
+                    pista = "Recuerda: AND=1 solo si ambos bits son 1, OR=1 si al menos un bit es 1, XOR=1 si los bits son diferentes.";
+                    break;
+                    
+                case 2:
+                    // Operación con NOT
+                    const num3 = Math.floor(Math.random() * 16) + 1;
+                    operacion = `NOT(${num3.toString(2).padStart(4, '0')})`;
+                    respuesta = (~num3 & 0xF).toString(2).padStart(4, '0');
+                    pista = "NOT invierte todos los bits: 0→1 y 1→0.";
+                    break;
+                    
+                case 3:
+                    // Operación combinada
+                    const num4 = Math.floor(Math.random() * 8) + 1;
+                    const num5 = Math.floor(Math.random() * 8) + 1;
+                    const num6 = Math.floor(Math.random() * 8) + 1;
+                    operacion = `(${num4.toString(2).padStart(3, '0')} AND ${num5.toString(2).padStart(3, '0')}) OR ${num6.toString(2).padStart(3, '0')}`;
+                    respuesta = ((num4 & num5) | num6).toString(2).padStart(3, '0');
+                    pista = "Resuelve primero la operación entre paréntesis.";
+                    break;
+                    
+                case 4:
+                    // Operación con desplazamiento
+                    const num7 = Math.floor(Math.random() * 32) + 1;
+                    const shift = Math.floor(Math.random() * 3) + 1;
+                    const direction = Math.random() < 0.5 ? '<<' : '>>';
+                    
+                    operacion = `${num7.toString(2).padStart(5, '0')} ${direction} ${shift}`;
+                    
+                    if (direction === '<<') {
+                        respuesta = ((num7 << shift) & 0x1F).toString(2).padStart(5, '0');
+                    } else {
+                        respuesta = (num7 >> shift).toString(2).padStart(5, '0');
+                    }
+                    
+                    pista = "<< desplaza bits a la izquierda, >> desplaza bits a la derecha.";
+                    break;
+                    
+                case 5:
+                    // Operación compleja
+                    const num8 = Math.floor(Math.random() * 16) + 1;
+                    const num9 = Math.floor(Math.random() * 16) + 1;
+                    const num10 = Math.floor(Math.random() * 16) + 1;
+                    operacion = `NOT(${num8.toString(2).padStart(4, '0')} AND ${num9.toString(2).padStart(4, '0')}) XOR ${num10.toString(2).padStart(4, '0')}`;
+                    respuesta = ((~(num8 & num9) & 0xF) ^ num10).toString(2).padStart(4, '0');
+                    pista = "Resuelve paso a paso: primero el AND, luego el NOT, finalmente el XOR.";
+                    break;
             }
             
-            document.getElementById('cipher-result').textContent = resultado;
-            addLog(`Descifrado por sustitución: ${resultado.substring(0, 20)}...`);
+            currentBinaryOperation = operacion;
+            binaryAnswer = respuesta;
+            
+            document.getElementById('binary-operation').textContent = operacion + " = ?";
+            document.getElementById('binary-hint').textContent = pista;
+            document.getElementById('binary-answer').value = '';
+            document.getElementById('binary-answer').focus();
+            
+            updateProgress(4, (binaryLevel - 1) / 5);
         }
         
-        function descifrarVigenere() {
-            const key = document.getElementById('vigenere-key').value.toUpperCase();
-            const mensaje = currentChallenge.message;
-            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            let resultado = '';
-            let keyIndex = 0;
+        function verificarRespuestaBinaria() {
+            const respuesta = document.getElementById('binary-answer').value.trim();
             
-            for (let i = 0; i < mensaje.length; i++) {
-                const char = mensaje[i];
-                if (char === ' ') {
-                    resultado += ' ';
-                } else {
-                    const charCode = alphabet.indexOf(char);
-                    const keyCode = alphabet.indexOf(key[keyIndex % key.length]);
-                    const newCode = (charCode - keyCode + 26) % 26;
-                    resultado += alphabet[newCode];
-                    keyIndex++;
-                }
-            }
-            
-            document.getElementById('cipher-result').textContent = resultado;
-            addLog(`Descifrado Vigenère con clave "${key}": ${resultado.substring(0, 20)}...`);
-        }
-        
-        function verificarDescifrado() {
-            const resultado = document.getElementById('cipher-result').textContent.toUpperCase();
-            
-            if (resultado === currentChallenge.answer) {
-                addLog(`¡Descifrado correcto! Mensaje: ${currentChallenge.answer}`);
+            if (respuesta === binaryAnswer) {
+                addLog(`Respuesta binaria correcta: ${binaryAnswer}`);
                 
-                if (cipherLevel >= 3) {
+                if (binaryLevel >= 5) {
                     completarReto4();
                 } else {
-                    cipherLevel++;
+                    binaryLevel++;
+                    binaryAttempts = 0;
                     setTimeout(() => {
-                        mostrarDesafio();
+                        generarOperacionBinaria();
                     }, 1500);
                 }
             } else {
-                cipherAttempts++;
-                document.getElementById('cipher-attempts').textContent = cipherAttempts;
+                binaryAttempts++;
+                document.getElementById('binary-attempts').textContent = binaryAttempts;
                 
-                if (cipherAttempts >= maxCipherAttempts) {
+                if (binaryAttempts >= maxBinaryAttempts) {
                     vidas--;
                     actualizarVidas();
                     addLog(`Máximo de intentos alcanzado. Vidas restantes: ${vidas}`);
@@ -1480,22 +1382,385 @@
                     if (vidas <= 0) {
                         finDelJuego();
                     } else {
+                        binaryAttempts = 0;
                         setTimeout(() => {
-                            mostrarDesafio();
+                            generarOperacionBinaria();
                         }, 1000);
                     }
                 } else {
-                    addLog(`Descifrado incorrecto. Intentos restantes: ${maxCipherAttempts - cipherAttempts}`);
+                    addLog(`Respuesta incorrecta. Intentos restantes: ${maxBinaryAttempts - binaryAttempts}`);
+                    document.getElementById('binary-answer').value = '';
+                    document.getElementById('binary-answer').focus();
                 }
             }
         }
         
         function completarReto4() {
-            addLog("Reto 4 completado. Todos los códigos descifrados.");
+            addLog("Reto 4 completado. Todos los niveles de lógica binaria superados.");
             retoActual++;
             setTimeout(() => {
                 mostrarRetoActual();
             }, 2000);
+        }
+        
+        function mostrarReto5() {
+            stegoAttempts = 0;
+            stegoRevealed = false;
+            
+            // Generar texto con mensaje oculto
+            generarTextoEsteganografia();
+            
+            document.getElementById('question-container').innerHTML = `
+                <div class="reto-container">
+                    <div class="reto-title">RETO 5: Esteganografía Avanzada</div>
+                    <div class="reto-description">
+                        <p>Encuentra el mensaje oculto en el siguiente texto usando técnicas de esteganografía.</p>
+                        <p>El mensaje está codificado usando múltiples capas de ocultación.</p>
+                    </div>
+                    <div class="game-area">
+                        <div class="stego-container">
+                            <div class="stego-attempts">Intentos: <span id="stego-attempts">0</span> / 3</div>
+                            <div class="stego-text" id="stego-text">${stegoText}</div>
+                            <div class="stego-hint" id="stego-hint">
+                                El mensaje está oculto usando técnicas avanzadas de esteganografía.
+                                Debes encontrar el patrón binario oculto, convertirlo a colores y reconocer la bandera.
+                            </div>
+                            <div class="stego-tools">
+                                <div class="stego-tool" onclick="revelarPista1()">Pista 1: Binario</div>
+                                <div class="stego-tool" onclick="revelarPista2()">Pista 2: Colores</div>
+                                <div class="stego-tool" onclick="revelarPista3()">Pista 3: Bandera</div>
+                            </div>
+                            <div class="stego-colors" id="stego-colors"></div>
+                            <input type="text" id="stego-answer" class="stego-input" placeholder="Mensaje oculto">
+                            <button onclick="verificarRespuestaEsteganografia()">Verificar</button>
+                            <div class="progress-bar">
+                                <div class="progress" id="progress5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('stego-attempts').textContent = stegoAttempts;
+            updateProgress(5, 0);
+            addLog("Iniciando Reto 5: Esteganografía Avanzada");
+        }
+        
+        function generarTextoEsteganografia() {
+            // Mensaje a ocultar: "España"
+            stegoMessage = "España";
+            
+            // Convertir el mensaje a binario (cada carácter a 8 bits)
+            stegoBinary = "";
+            for (let i = 0; i < stegoMessage.length; i++) {
+                const charCode = stegoMessage.charCodeAt(i);
+                stegoBinary += charCode.toString(2).padStart(8, '0');
+            }
+            
+            // Convertir binario a colores (cada 8 bits = 1 byte = 1 color RGB)
+            stegoColors = [];
+            for (let i = 0; i < stegoBinary.length; i += 8) {
+                const byte = stegoBinary.substr(i, 8);
+                const decimal = parseInt(byte, 2);
+                
+                // Mapear el valor decimal a colores de la bandera de España
+                // Rojo: valores bajos (0-85), Amarillo: valores medios (86-170), Rojo: valores altos (171-255)
+                let color;
+                if (decimal <= 85) {
+                    // Rojo español
+                    color = `rgb(${170 + Math.floor(decimal / 85 * 85)}, 0, 0)`;
+                } else if (decimal <= 170) {
+                    // Amarillo español
+                    const yellowValue = Math.floor((decimal - 86) / 84 * 255);
+                    color = `rgb(${yellowValue}, ${yellowValue}, 0)`;
+                } else {
+                    // Rojo español
+                    color = `rgb(${170 + Math.floor((decimal - 171) / 84 * 85)}, 0, 0)`;
+                }
+                
+                stegoColors.push(color);
+            }
+            
+            // Texto base con esteganografía
+            const textoBase = `El sistema operativo es la base fundamental de cualquier computadora moderna. 
+            Los algoritmos de encriptación garantizan la seguridad de los datos transmitidos. 
+            La arquitectura de red determina cómo se conectan los dispositivos entre sí. 
+            Los protocolos de comunicación establecen las reglas para el intercambio de información. 
+            La inteligencia artificial está transformando numerosas industrias. 
+            El análisis de datos permite descubrir patrones ocultos en grandes volúmenes de información. 
+            La realidad virtual crea experiencias inmersivas para los usuarios. 
+            La computación cuántica promete revolucionar el procesamiento de información.`;
+            
+            // Ocultar el binario en el texto usando espacios y caracteres invisibles
+            let textoConBinario = "";
+            let binIndex = 0;
+            
+            for (let i = 0; i < textoBase.length; i++) {
+                const char = textoBase[i];
+                textoConBinario += char;
+                
+                // Insertar bits usando espacios y caracteres invisibles
+                if (char === ' ' && binIndex < stegoBinary.length) {
+                    if (stegoBinary[binIndex] === '1') {
+                        textoConBinario += '  '; // Espacio doble para bit 1
+                    } else {
+                        textoConBinario += ' '; // Espacio simple para bit 0
+                    }
+                    binIndex++;
+                }
+            }
+            
+            stegoText = textoConBinario;
+        }
+        
+        function revelarPista1() {
+            if (!stegoRevealed) {
+                document.getElementById('stego-hint').innerHTML = `
+                    <strong>Pista 1:</strong> Los espacios dobles representan bits '1' y los espacios simples representan bits '0'.
+                    <br><strong>Secuencia binaria:</strong> ${stegoBinary}
+                `;
+                stegoRevealed = true;
+            }
+        }
+        
+        function revelarPista2() {
+            if (!stegoRevealed) {
+                document.getElementById('stego-hint').innerHTML = `
+                    <strong>Pista 2:</strong> Cada grupo de 8 bits forma un byte que representa un color RGB.
+                    <br><strong>Valores decimales:</strong> ${stegoBinary.match(/.{1,8}/g).map(byte => parseInt(byte, 2)).join(', ')}
+                `;
+                stegoRevealed = true;
+            }
+        }
+        
+        function revelarPista3() {
+            if (!stegoRevealed) {
+                // Mostrar los colores
+                const colorsContainer = document.getElementById('stego-colors');
+                colorsContainer.innerHTML = '';
+                
+                stegoColors.forEach(color => {
+                    const colorBox = document.createElement('div');
+                    colorBox.className = 'color-box';
+                    colorBox.style.backgroundColor = color;
+                    colorsContainer.appendChild(colorBox);
+                });
+                
+                document.getElementById('stego-hint').innerHTML = `
+                    <strong>Pista 3:</strong> Los colores forman la bandera de España (rojo-amarillo-rojo).
+                    <br><strong>Colores RGB:</strong> ${stegoColors.join(', ')}
+                `;
+                stegoRevealed = true;
+            }
+        }
+        
+        function verificarRespuestaEsteganografia() {
+            const respuesta = document.getElementById('stego-answer').value.trim();
+            
+            if (respuesta.toLowerCase() === "españa") {
+                addLog(`Mensaje esteganográfico encontrado: ${respuesta}`);
+                completarReto5();
+            } else {
+                stegoAttempts++;
+                document.getElementById('stego-attempts').textContent = stegoAttempts;
+                
+                if (stegoAttempts >= maxStegoAttempts) {
+                    vidas--;
+                    actualizarVidas();
+                    addLog(`Máximo de intentos alcanzado. Vidas restantes: ${vidas}`);
+                    
+                    if (vidas <= 0) {
+                        finDelJuego();
+                    } else {
+                        stegoAttempts = 0;
+                        setTimeout(() => {
+                            mostrarReto5();
+                        }, 1000);
+                    }
+                } else {
+                    addLog(`Mensaje incorrecto. Intentos restantes: ${maxStegoAttempts - stegoAttempts}`);
+                    document.getElementById('stego-answer').value = '';
+                    document.getElementById('stego-answer').focus();
+                }
+            }
+        }
+        
+        function completarReto5() {
+            addLog("Reto 5 completado. Mensaje esteganográfico descifrado.");
+            retoActual++;
+            setTimeout(() => {
+                mostrarRetoActual();
+            }, 2000);
+        }
+        
+        function mostrarCapaFinal() {
+            securityStep = 1;
+            securityAttempts = 0;
+            
+            // Mensaje cifrado final
+            securityMessage = "535441524c4947485420435245505455444f";
+            
+            document.getElementById('question-container').innerHTML = `
+                <div class="reto-container">
+                    <div class="reto-title">CAPA FINAL DE SEGURIDAD</div>
+                    <div class="reto-description">
+                        <p>Has superado todos los retos, pero aún debes descifrar el mensaje final.</p>
+                        <p>Este es el último obstáculo antes de obtener el acceso completo.</p>
+                    </div>
+                    <div class="game-area">
+                        <div class="final-security">
+                            <div class="security-step">Paso: <span id="security-step">1</span> / 4</div>
+                            <div class="security-attempts">Intentos: <span id="security-attempts">0</span> / 3</div>
+                            
+                            <div class="security-text" id="security-text">
+                                ${securityMessage}
+                            </div>
+                            
+                            <div class="security-hint" id="security-hint">
+                                <strong>Pista inicial:</strong> El mensaje está codificado en hexadecimal. 
+                                Conviértelo a texto para continuar.
+                            </div>
+                            
+                            <div class="security-tools">
+                                <div class="tool-row">
+                                    <label>Resultado:</label>
+                                    <input type="text" id="security-result" placeholder="Introduce el resultado">
+                                </div>
+                            </div>
+                            
+                            <button onclick="verificarPasoSeguridad()">Verificar</button>
+                            
+                            <div class="book-excerpt" id="book-excerpt" style="display: none;">
+                                <!-- El extracto del libro se mostrará aquí -->
+                            </div>
+                            
+                            <div class="progress-bar">
+                                <div class="progress" id="progress6"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('security-attempts').textContent = securityAttempts;
+            updateProgress(6, 0);
+            addLog("Iniciando Capa Final de Seguridad");
+        }
+        
+        function verificarPasoSeguridad() {
+            const resultado = document.getElementById('security-result').value.trim();
+            let correcto = false;
+            
+            switch(securityStep) {
+                case 1:
+                    // Paso 1: Hexadecimal a texto
+                    if (resultado === "STARLIGHT CREPTUDO") {
+                        correcto = true;
+                        securityStep++;
+                        securityMessage = "U1RBUkxJR0hUIENSRVBUVURPIFRFWFRPIEZJTkFMCg==";
+                        
+                        document.getElementById('security-step').textContent = securityStep;
+                        document.getElementById('security-text').textContent = securityMessage;
+                        document.getElementById('security-hint').innerHTML = `
+                            <strong>Paso 2:</strong> El nuevo mensaje está en Base64. 
+                            Conviértelo a texto para continuar.
+                        `;
+                        document.getElementById('security-result').value = '';
+                        updateProgress(6, 0.25);
+                        
+                        addLog("Paso 1 completado: Hexadecimal a texto");
+                    }
+                    break;
+                    
+                case 2:
+                    // Paso 2: Base64 a texto
+                    if (resultado === "STARLIGHT CREPTUDO TEXT OF FINAL") {
+                        correcto = true;
+                        securityStep++;
+                        securityMessage = "V1hWVUdZVUJUWVJXVlVHWVVCVFZSV1ZVRllVQlRWUlc=";
+                        
+                        document.getElementById('security-step').textContent = securityStep;
+                        document.getElementById('security-text').textContent = securityMessage;
+                        document.getElementById('security-hint').innerHTML = `
+                            <strong>Paso 3:</strong> Este mensaje también está en Base64, pero necesitas una clave.
+                            <br>La clave está en el libro "Simulacros y Simulación", página 42, línea 3, palabra 5.
+                        `;
+                        document.getElementById('security-result').value = '';
+                        
+                        // Mostrar extracto del libro
+                        const bookExcerpt = `Página 42:
+                        Línea 1: La simulación no es una copia de lo real, sino que reemplaza a lo real.
+                        Línea 2: En la era de la simulación, los signos ya no remiten a nada real.
+                        Línea 3: El mapa precede al territorio y genera el territorio. La simulación es la realidad.
+                        Línea 4: Hiperrealidad es el resultado de la simulación total.
+                        Línea 5: Los modelos generan lo real sin necesidad de referentes externos.`;
+                        
+                        document.getElementById('book-excerpt').textContent = bookExcerpt;
+                        document.getElementById('book-excerpt').style.display = 'block';
+                        
+                        updateProgress(6, 0.5);
+                        
+                        addLog("Paso 2 completado: Base64 a texto");
+                    }
+                    break;
+                    
+                case 3:
+                    // Paso 3: Base64 con clave
+                    if (resultado.toLowerCase() === "simulacion") {
+                        correcto = true;
+                        securityStep++;
+                        securityMessage = "V1hWVUdZVUJUWVJXVlVHWVVCVFZSV1ZVRllVQlRWUlc=";
+                        
+                        document.getElementById('security-step').textContent = securityStep;
+                        document.getElementById('security-text').textContent = securityMessage;
+                        document.getElementById('security-hint').innerHTML = `
+                            <strong>Paso 4:</strong> Usa la clave encontrada para descifrar el mensaje Base64.
+                            <br>El resultado final es la contraseña del sistema.
+                        `;
+                        document.getElementById('security-result').value = '';
+                        updateProgress(6, 0.75);
+                        
+                        addLog("Paso 3 completado: Clave encontrada");
+                    }
+                    break;
+                    
+                case 4:
+                    // Paso 4: Descifrar con clave
+                    if (resultado.toLowerCase() === "reconquista") {
+                        correcto = true;
+                        updateProgress(6, 1);
+                        
+                        addLog("Paso 4 completado: Mensaje final descifrado");
+                        setTimeout(() => {
+                            mostrarCompletado();
+                        }, 2000);
+                    }
+                    break;
+            }
+            
+            if (!correcto) {
+                securityAttempts++;
+                document.getElementById('security-attempts').textContent = securityAttempts;
+                
+                if (securityAttempts >= maxSecurityAttempts) {
+                    vidas--;
+                    actualizarVidas();
+                    addLog(`Máximo de intentos alcanzado. Vidas restantes: ${vidas}`);
+                    
+                    if (vidas <= 0) {
+                        finDelJuego();
+                    } else {
+                        securityAttempts = 0;
+                        setTimeout(() => {
+                            mostrarCapaFinal();
+                        }, 1000);
+                    }
+                } else {
+                    addLog(`Respuesta incorrecta. Intentos restantes: ${maxSecurityAttempts - securityAttempts}`);
+                    document.getElementById('security-result').value = '';
+                    document.getElementById('security-result').focus();
+                }
+            }
         }
         
         function updateProgress(reto, porcentaje) {
@@ -1507,12 +1772,12 @@
         
         function mostrarCompletado() {
             document.getElementById('question-container').innerHTML = `
-                <h2>VERIFICACIÓN COMPLETADA</h2>
-                <p>Acceso concedido al sistema.</p>
-                <p>Contraseña cifrada: <strong>reconquista</strong></p>
-                <p>Pista de descifrado: "Clave: CIBER" (Cifrado Vigenère)</p>
+                <h2>ACCESO CONCEDIDO</h2>
+                <p>Has superado todas las capas de seguridad del sistema.</p>
+                <p>Contraseña final: <strong>RECONQUISTA</strong></p>
+                <p>¡Felicidades por completar el desafío!</p>
             `;
-            addLog("Verificación completada. Acceso concedido.");
+            addLog("Verificación completada. Acceso concedido al sistema.");
         }
         
         function finDelJuego() {
@@ -1541,7 +1806,7 @@
                     mostrarPregunta();
                 } 
                 // Si estamos en los retos, avanzar al siguiente reto
-                else if (retoActual < 4) {
+                else if (retoActual < 6) {
                     retoActual++;
                     mostrarRetoActual();
                 }
