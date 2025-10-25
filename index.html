@@ -519,6 +519,396 @@
             border: 1px dashed #0f0;
             border-radius: 5px;
         }
+        
+        /* Estilos para el Reto 6: LSB Canvas Interactivo */
+        .lsb-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .lsb-canvas-wrapper {
+            position: relative;
+            border: 2px solid #0f0;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            background: #000;
+            padding: 10px;
+        }
+        
+        #lsb-canvas {
+            display: block;
+            max-width: 100%;
+            cursor: crosshair;
+            image-rendering: pixelated;
+        }
+        
+        .lsb-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        .lsb-control-panel {
+            background: rgba(0, 30, 0, 0.7);
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        
+        .lsb-control-panel h3 {
+            color: #ff0;
+            margin-bottom: 10px;
+            font-size: 1em;
+            border-bottom: 1px solid #0f0;
+            padding-bottom: 5px;
+        }
+        
+        .lsb-button {
+            width: 100%;
+            margin: 5px 0;
+            padding: 10px;
+            background: rgba(0, 50, 0, 0.5);
+            border: 1px solid #0f0;
+            color: #0f0;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        
+        .lsb-button:hover {
+            background: #0f0;
+            color: #000;
+            box-shadow: 0 0 10px #0f0;
+        }
+        
+        .lsb-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .pixel-info {
+            background: rgba(0, 20, 0, 0.8);
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+        
+        .pixel-info-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            padding: 3px 0;
+            border-bottom: 1px dotted #0f0;
+        }
+        
+        .binary-display {
+            background: rgba(0, 20, 0, 0.9);
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .binary-row {
+            display: flex;
+            gap: 10px;
+            margin: 5px 0;
+            font-size: 0.85em;
+        }
+        
+        .binary-bit {
+            padding: 2px 5px;
+            background: rgba(0, 50, 0, 0.5);
+            border: 1px solid #0f0;
+            border-radius: 3px;
+            min-width: 20px;
+            text-align: center;
+        }
+        
+        .binary-bit.one {
+            background: rgba(0, 100, 0, 0.7);
+            color: #fff;
+        }
+        
+        .lsb-extracted-message {
+            background: rgba(0, 50, 0, 0.7);
+            border: 2px solid #ff0;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.2em;
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 10px #ff0; }
+            50% { box-shadow: 0 0 20px #ff0; }
+        }
+        
+        .spectrum-analyzer {
+            background: rgba(0, 20, 0, 0.8);
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .color-channel {
+            margin: 10px 0;
+        }
+        
+        .channel-bar {
+            width: 100%;
+            height: 20px;
+            background: #333;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 5px 0;
+        }
+        
+        .channel-fill {
+            height: 100%;
+            transition: width 0.3s;
+        }
+        
+        .channel-fill.red { background: #f00; }
+        .channel-fill.green { background: #0f0; }
+        .channel-fill.blue { background: #00f; }
+        
+        /* Estilos para el Reto 7: Criptograma Multi-Capa */
+        .crypto-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .crypto-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .crypto-layer {
+            background: rgba(0, 30, 0, 0.7);
+            border: 2px solid #0f0;
+            border-radius: 5px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .crypto-layer.locked {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        .crypto-layer.completed {
+            border-color: #ff0;
+            background: rgba(50, 50, 0, 0.3);
+        }
+        
+        .layer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0f0;
+        }
+        
+        .layer-title {
+            color: #ff0;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        
+        .layer-status {
+            padding: 5px 10px;
+            background: rgba(0, 50, 0, 0.7);
+            border: 1px solid #0f0;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        
+        .layer-status.unlocked {
+            color: #0f0;
+        }
+        
+        .layer-status.locked {
+            color: #f00;
+        }
+        
+        .layer-status.completed {
+            color: #ff0;
+            border-color: #ff0;
+        }
+        
+        .encrypted-text {
+            background: rgba(0, 20, 0, 0.9);
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+            line-height: 1.6;
+            min-height: 60px;
+        }
+        
+        .crypto-tools {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .crypto-tool {
+            background: rgba(0, 40, 0, 0.7);
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        
+        .crypto-tool h4 {
+            color: #ff0;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+        
+        .tool-input-group {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+            align-items: center;
+        }
+        
+        .tool-input-group label {
+            min-width: 80px;
+            font-size: 0.9em;
+        }
+        
+        .tool-input-group input,
+        .tool-input-group select {
+            flex: 1;
+        }
+        
+        .frequency-analysis {
+            background: rgba(0, 20, 0, 0.9);
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .freq-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            height: 150px;
+            margin: 15px 0;
+            border-bottom: 1px solid #0f0;
+            padding: 10px;
+        }
+        
+        .freq-bar {
+            flex: 1;
+            background: #0f0;
+            min-width: 15px;
+            position: relative;
+            transition: height 0.3s;
+            cursor: pointer;
+        }
+        
+        .freq-bar:hover {
+            background: #ff0;
+        }
+        
+        .freq-label {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8em;
+        }
+        
+        .freq-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7em;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2px 5px;
+            border-radius: 3px;
+            white-space: nowrap;
+        }
+        
+        .substitution-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .substitution-pair {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(0, 40, 0, 0.7);
+            border: 1px solid #0f0;
+            border-radius: 3px;
+            padding: 5px;
+        }
+        
+        .substitution-pair input {
+            width: 30px;
+            text-align: center;
+            padding: 3px;
+            margin: 0;
+        }
+        
+        .cipher-preview {
+            background: rgba(0, 20, 0, 0.9);
+            border: 1px dashed #ff0;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+        }
+        
+        .crypto-hint {
+            background: rgba(50, 50, 0, 0.3);
+            border: 1px solid #ff0;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+            font-style: italic;
+            color: #ff0;
+            font-size: 0.9em;
+        }
+        
+        .layer-connections {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            color: #0f0;
+            font-size: 2em;
+        }
     </style>
 </head>
 <body>
@@ -658,6 +1048,28 @@
         let securityMessage = "";
         let securityKey = "";
         
+        // Variables para el Reto 6: LSB Canvas Interactivo
+        let lsbCanvas = null;
+        let lsbCtx = null;
+        let lsbImageData = null;
+        let lsbAttempts = 0;
+        let maxLsbAttempts = 3;
+        let lsbMessage = "SIMULACION";
+        let lsbCurrentPixel = {x: 0, y: 0};
+        let lsbExtractedBits = [];
+        let lsbAnalysisMode = 'rgb';
+        
+        // Variables para el Reto 7: Criptograma Multi-Capa
+        let cryptoAttempts = 0;
+        let maxCryptoAttempts = 3;
+        let cryptoLayers = [];
+        let currentCryptoLayer = 0;
+        let cryptoCompletedLayers = [];
+        let cryptoFinalMessage = "RECONQUISTA";
+        let caesarShift = 13;
+        let vigenereKey = "CLAVE";
+        let cryptoFrequencies = {};
+        
         function addLog(message) {
             const log = document.getElementById('log');
             const entry = document.createElement('div');
@@ -761,6 +1173,12 @@
                     mostrarReto5();
                     break;
                 case 5:
+                    mostrarReto6();
+                    break;
+                case 6:
+                    mostrarReto7();
+                    break;
+                case 7:
                     mostrarCapaFinal();
                     break;
                 default:
@@ -1558,7 +1976,7 @@
             const respuesta = document.getElementById('stego-answer').value.trim();
             
             if (respuesta.toLowerCase() === "españa") {
-                addLog(`Mensaje esteganográfico encontrado: ${respuesta}`);
+                addLog("✅ Mensaje esteganográfico correcto");
                 completarReto5();
             } else {
                 stegoAttempts++;
@@ -1586,11 +2004,989 @@
         }
         
         function completarReto5() {
-            addLog("Reto 5 completado. Mensaje esteganográfico descifrado.");
+            addLog("🎉 Reto 5 completado");
             retoActual++;
             setTimeout(() => {
                 mostrarRetoActual();
             }, 2000);
+        }
+        
+        // ============================================
+        // RETO 6: LSB Canvas Interactivo
+        // ============================================
+        
+        function mostrarReto6() {
+            lsbAttempts = 0;
+            lsbExtractedBits = [];
+            lsbCurrentPixel = {x: 0, y: 0};
+            
+            document.getElementById('question-container').innerHTML = `
+                <div class="reto-container">
+                    <div class="reto-title">🔬 RETO 6: Análisis LSB de Imagen</div>
+                    <div class="reto-description">
+                        <p>Una imagen contiene un mensaje oculto usando esteganografía LSB (Least Significant Bit).</p>
+                        <p>Debes analizar los bits menos significativos de los píxeles para extraer el mensaje secreto.</p>
+                        <p style="color: #ff0;">⚠️ Este reto requiere análisis profundo y uso de herramientas avanzadas.</p>
+                    </div>
+                    
+                    <div class="game-area">
+                        <div class="lsb-container">
+                            <!-- Información de intentos -->
+                            <div style="text-align: center; margin-bottom: 20px;">
+                                <span style="color: #ff0; font-size: 1.1em;">Intentos: <span id="lsb-attempts">0</span> / 3</span>
+                            </div>
+                            
+                            <!-- Canvas con la imagen -->
+                            <div class="lsb-canvas-wrapper">
+                                <canvas id="lsb-canvas" width="400" height="100"></canvas>
+                            </div>
+                            
+                            <!-- Información del píxel bajo el cursor -->
+                            <div class="pixel-info" id="pixel-info">
+                                <div style="text-align: center; color: #ff0; margin-bottom: 10px;">
+                                    <strong>📍 Información del Píxel</strong>
+                                </div>
+                                <div class="pixel-info-row">
+                                    <span>Posición:</span>
+                                    <span id="pixel-pos">Mueve el cursor sobre la imagen</span>
+                                </div>
+                                <div class="pixel-info-row">
+                                    <span>RGB:</span>
+                                    <span id="pixel-rgb">-</span>
+                                </div>
+                                <div class="pixel-info-row">
+                                    <span>Binario R:</span>
+                                    <span id="pixel-bin-r" style="font-family: 'Courier New';">-</span>
+                                </div>
+                                <div class="pixel-info-row">
+                                    <span>Binario G:</span>
+                                    <span id="pixel-bin-g" style="font-family: 'Courier New';">-</span>
+                                </div>
+                                <div class="pixel-info-row">
+                                    <span>Binario B:</span>
+                                    <span id="pixel-bin-b" style="font-family: 'Courier New';">-</span>
+                                </div>
+                                <div class="pixel-info-row" style="border-top: 2px solid #0f0; margin-top: 5px; padding-top: 5px;">
+                                    <span>LSB:</span>
+                                    <span id="pixel-lsb" style="color: #ff0; font-weight: bold;">-</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Controles de análisis -->
+                            <div class="lsb-controls">
+                                <div class="lsb-control-panel">
+                                    <h3>🔧 Herramientas de Extracción</h3>
+                                    <button class="lsb-button" onclick="extraerLSBManual()">
+                                        🔍 Extraer LSB Manual
+                                    </button>
+                                    <button class="lsb-button" onclick="extraerLSBAuto()">
+                                        ⚡ Extracción Automática
+                                    </button>
+                                    <button class="lsb-button" onclick="mostrarBinarioCompleto()">
+                                        📊 Ver Secuencia Binaria
+                                    </button>
+                                    <button class="lsb-button" onclick="decodificarASCII()">
+                                        📝 Decodificar a ASCII
+                                    </button>
+                                </div>
+                                
+                                <div class="lsb-control-panel">
+                                    <h3>🎨 Análisis de Canales</h3>
+                                    <button class="lsb-button" onclick="analizarCanal('red')">
+                                        🔴 Canal Rojo
+                                    </button>
+                                    <button class="lsb-button" onclick="analizarCanal('green')">
+                                        🟢 Canal Verde
+                                    </button>
+                                    <button class="lsb-button" onclick="analizarCanal('blue')">
+                                        🔵 Canal Azul
+                                    </button>
+                                    <button class="lsb-button" onclick="analizarCanal('all')">
+                                        ⚪ Todos los Canales
+                                    </button>
+                                </div>
+                                
+                                <div class="lsb-control-panel">
+                                    <h3>💡 Pistas</h3>
+                                    <button class="lsb-button" onclick="mostrarPistaLSB(1)">
+                                        💭 Pista 1: ¿Qué es LSB?
+                                    </button>
+                                    <button class="lsb-button" onclick="mostrarPistaLSB(2)">
+                                        💭 Pista 2: Canal correcto
+                                    </button>
+                                    <button class="lsb-button" onclick="mostrarPistaLSB(3)">
+                                        💭 Pista 3: Decodificación
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Análisis de espectro -->
+                            <div class="spectrum-analyzer" id="spectrum-analyzer" style="display: none;">
+                                <h3 style="color: #ff0; text-align: center; margin-bottom: 15px;">📊 Análisis de Canales RGB</h3>
+                                <div class="color-channel">
+                                    <div>🔴 Canal Rojo - LSB: <span id="red-lsb-count">0</span> bits extraídos</div>
+                                    <div class="channel-bar">
+                                        <div class="channel-fill red" id="red-fill" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="color-channel">
+                                    <div>🟢 Canal Verde - LSB: <span id="green-lsb-count">0</span> bits extraídos</div>
+                                    <div class="channel-bar">
+                                        <div class="channel-fill green" id="green-fill" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="color-channel">
+                                    <div>🔵 Canal Azul - LSB: <span id="blue-lsb-count">0</span> bits extraídos</div>
+                                    <div class="channel-bar">
+                                        <div class="channel-fill blue" id="blue-fill" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Display de binario -->
+                            <div class="binary-display" id="binary-display" style="display: none;">
+                                <h3 style="color: #ff0; text-align: center; margin-bottom: 10px;">🔢 Secuencia Binaria Extraída</h3>
+                                <div id="binary-content"></div>
+                            </div>
+                            
+                            <!-- Mensaje extraído -->
+                            <div id="extracted-message-container"></div>
+                            
+                            <!-- Crypto hint -->
+                            <div class="crypto-hint" id="lsb-hint">
+                                <strong>💡 Información:</strong> El mensaje está oculto en los bits menos significativos (LSB) de los píxeles.
+                                Cada píxel RGB tiene 3 bytes, y cada byte tiene 8 bits. El LSB es el bit en la posición 0 (el último).
+                            </div>
+                            
+                            <!-- Input de respuesta -->
+                            <div style="text-align: center; margin-top: 20px;">
+                                <input type="text" id="lsb-answer" placeholder="Introduce el mensaje oculto" 
+                                       style="width: 300px; text-align: center; font-size: 1.1em; padding: 10px;">
+                                <br>
+                                <button onclick="verificarRespuestaLSB()" style="margin-top: 10px; padding: 10px 30px; font-size: 1.1em;">
+                                    ✅ Verificar Respuesta
+                                </button>
+                            </div>
+                            
+                            <!-- Barra de progreso -->
+                            <div class="progress-bar">
+                                <div class="progress" id="progress6"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Inicializar canvas
+            setTimeout(() => {
+                inicializarCanvasLSB();
+            }, 100);
+            
+            updateProgress(6, 0);
+            addLog("Iniciando Reto 6: Análisis LSB de Imagen");
+        }
+        
+        function inicializarCanvasLSB() {
+            lsbCanvas = document.getElementById('lsb-canvas');
+            lsbCtx = lsbCanvas.getContext('2d');
+            
+            // Generar imagen con mensaje oculto en LSB
+            generarImagenConLSB();
+            
+            // Event listeners para el canvas
+            lsbCanvas.addEventListener('mousemove', actualizarInfoPixel);
+            lsbCanvas.addEventListener('click', marcarPixel);
+        }
+        
+        function generarImagenConLSB() {
+            const width = lsbCanvas.width;
+            const height = lsbCanvas.height;
+            
+            // Crear ImageData
+            lsbImageData = lsbCtx.createImageData(width, height);
+            const data = lsbImageData.data;
+            
+            // Mensaje a ocultar: "SIMULACION"
+            lsbMessage = "SIMULACION";
+            
+            // Convertir mensaje a binario
+            let binaryMessage = "";
+            for (let i = 0; i < lsbMessage.length; i++) {
+                const charCode = lsbMessage.charCodeAt(i);
+                binaryMessage += charCode.toString(2).padStart(8, '0');
+            }
+            
+            // Añadir marcador de fin
+            binaryMessage += "00000000";
+            
+            let bitIndex = 0;
+            
+            // Llenar píxeles con colores aleatorios y ocultar mensaje en LSB del canal verde
+            for (let i = 0; i < data.length; i += 4) {
+                // Generar colores aleatorios
+                const r = Math.floor(Math.random() * 256);
+                const g = Math.floor(Math.random() * 256);
+                const b = Math.floor(Math.random() * 256);
+                
+                // Asignar colores
+                data[i] = r;         // R
+                data[i + 2] = b;     // B
+                data[i + 3] = 255;   // A (alpha)
+                
+                // Ocultar bit en el canal verde (LSB)
+                if (bitIndex < binaryMessage.length) {
+                    const bit = parseInt(binaryMessage[bitIndex]);
+                    // Modificar el LSB del canal verde
+                    data[i + 1] = (g & 0xFE) | bit; // Limpiar LSB y poner el bit del mensaje
+                    bitIndex++;
+                } else {
+                    data[i + 1] = g;
+                }
+            }
+            
+            // Dibujar imagen en canvas
+            lsbCtx.putImageData(lsbImageData, 0, 0);
+            
+            addLog("Imagen generada para análisis LSB");
+        }
+        
+        function actualizarInfoPixel(e) {
+            const rect = lsbCanvas.getBoundingClientRect();
+            const x = Math.floor(e.clientX - rect.left);
+            const y = Math.floor(e.clientY - rect.top);
+            
+            if (x >= 0 && x < lsbCanvas.width && y >= 0 && y < lsbCanvas.height) {
+                const pixelData = lsbCtx.getImageData(x, y, 1, 1).data;
+                const r = pixelData[0];
+                const g = pixelData[1];
+                const b = pixelData[2];
+                
+                // Actualizar información
+                document.getElementById('pixel-pos').textContent = `(${x}, ${y})`;
+                document.getElementById('pixel-rgb').textContent = `R:${r} G:${g} B:${b}`;
+                document.getElementById('pixel-bin-r').textContent = r.toString(2).padStart(8, '0');
+                document.getElementById('pixel-bin-g').textContent = g.toString(2).padStart(8, '0');
+                document.getElementById('pixel-bin-b').textContent = b.toString(2).padStart(8, '0');
+                
+                // Mostrar LSB de cada canal
+                const lsbR = r & 1;
+                const lsbG = g & 1;
+                const lsbB = b & 1;
+                document.getElementById('pixel-lsb').textContent = `R:${lsbR} G:${lsbG} B:${lsbB}`;
+                
+                lsbCurrentPixel = {x, y};
+            }
+        }
+        
+        function marcarPixel(e) {
+            const rect = lsbCanvas.getBoundingClientRect();
+            const x = Math.floor(e.clientX - rect.left);
+            const y = Math.floor(e.clientY - rect.top);
+            
+            // Dibujar un pequeño círculo en el píxel seleccionado
+            lsbCtx.strokeStyle = '#ff0';
+            lsbCtx.lineWidth = 2;
+            lsbCtx.strokeRect(x - 2, y - 2, 4, 4);
+            
+            addLog(`Píxel marcado en (${x}, ${y})`);
+        }
+        
+        function extraerLSBManual() {
+            addLog("Extracción manual LSB iniciada...");
+            
+            const data = lsbImageData.data;
+            let extractedBits = "";
+            
+            // Extraer LSB del canal verde de los primeros 100 píxeles
+            for (let i = 0; i < Math.min(400, data.length / 4); i++) {
+                const pixelIndex = i * 4;
+                const g = data[pixelIndex + 1];
+                const lsb = g & 1;
+                extractedBits += lsb;
+            }
+            
+            lsbExtractedBits = extractedBits;
+            
+            // Mostrar primeros bits
+            document.getElementById('lsb-hint').innerHTML = `
+                <strong>📊 Extracción Manual:</strong><br>
+                Primeros 80 bits del canal verde: <span style="font-family: 'Courier New'; color: #ff0;">${extractedBits.substring(0, 80)}</span>
+                <br><br>
+                <strong>💡 Nota:</strong> Agrupa los bits en grupos de 8 para formar bytes, luego convierte a ASCII.
+            `;
+            
+            updateProgress(6, 0.25);
+            addLog(`Extraídos ${extractedBits.length} bits del canal verde`);
+        }
+        
+        function extraerLSBAuto() {
+            addLog("Extracción automática LSB iniciada...");
+            
+            const data = lsbImageData.data;
+            let extractedBits = "";
+            
+            // Extraer LSB del canal verde de todos los píxeles
+            for (let i = 1; i < data.length; i += 4) {
+                const lsb = data[i] & 1;
+                extractedBits += lsb;
+            }
+            
+            lsbExtractedBits = extractedBits;
+            
+            // Mostrar análisis de canales
+            document.getElementById('spectrum-analyzer').style.display = 'block';
+            document.getElementById('green-lsb-count').textContent = extractedBits.length;
+            document.getElementById('green-fill').style.width = '100%';
+            
+            updateProgress(6, 0.5);
+            addLog(`Extracción automática completada: ${extractedBits.length} bits`);
+        }
+        
+        function mostrarBinarioCompleto() {
+            if (lsbExtractedBits.length === 0) {
+                addLog("⚠️ Primero debes extraer los bits LSB");
+                return;
+            }
+            
+            const binaryDisplay = document.getElementById('binary-display');
+            const binaryContent = document.getElementById('binary-content');
+            
+            binaryDisplay.style.display = 'block';
+            binaryContent.innerHTML = '';
+            
+            // Mostrar bits en grupos de 8
+            for (let i = 0; i < Math.min(160, lsbExtractedBits.length); i += 8) {
+                const byte = lsbExtractedBits.substring(i, i + 8).padEnd(8, '0');
+                const decimal = parseInt(byte, 2);
+                const char = decimal > 0 ? String.fromCharCode(decimal) : '?';
+                
+                const row = document.createElement('div');
+                row.className = 'binary-row';
+                row.innerHTML = `
+                    <span style="color: #0f0;">Byte ${i/8}:</span>
+                    ${byte.split('').map((bit, idx) => 
+                        `<span class="binary-bit ${bit === '1' ? 'one' : ''}">${bit}</span>`
+                    ).join('')}
+                    <span style="color: #ff0; margin-left: 10px;">= ${decimal} (${char})</span>
+                `;
+                binaryContent.appendChild(row);
+            }
+            
+            updateProgress(6, 0.75);
+            addLog("Secuencia binaria visualizada");
+        }
+        
+        function decodificarASCII() {
+            if (lsbExtractedBits.length === 0) {
+                addLog("⚠️ Primero debes extraer los bits LSB");
+                return;
+            }
+            
+            let mensaje = "";
+            
+            // Convertir bits a caracteres
+            for (let i = 0; i < lsbExtractedBits.length; i += 8) {
+                const byte = lsbExtractedBits.substring(i, i + 8);
+                if (byte.length === 8) {
+                    const decimal = parseInt(byte, 2);
+                    if (decimal === 0) break; // Fin del mensaje
+                    if (decimal >= 32 && decimal <= 126) {
+                        mensaje += String.fromCharCode(decimal);
+                    }
+                }
+            }
+            
+            // Mostrar mensaje
+            const container = document.getElementById('extracted-message-container');
+            container.innerHTML = `
+                <div class="lsb-extracted-message">
+                    <div style="font-size: 1.5em; color: #ff0; margin-bottom: 10px;">🎉 MENSAJE EXTRAÍDO</div>
+                    <div style="font-size: 2em; color: #0f0; font-weight: bold; letter-spacing: 3px;">
+                        ${mensaje}
+                    </div>
+                    <div style="margin-top: 10px; font-size: 0.9em; color: #aaa;">
+                        Introduce este mensaje en el campo de respuesta
+                    </div>
+                </div>
+            `;
+            
+            updateProgress(6, 0.9);
+            addLog("Mensaje ASCII decodificado exitosamente");
+        }
+        
+        function analizarCanal(canal) {
+            const data = lsbImageData.data;
+            let channelBits = "";
+            let channelIndex;
+            
+            switch(canal) {
+                case 'red':
+                    channelIndex = 0;
+                    addLog("Analizando canal ROJO...");
+                    break;
+                case 'green':
+                    channelIndex = 1;
+                    addLog("Analizando canal VERDE...");
+                    break;
+                case 'blue':
+                    channelIndex = 2;
+                    addLog("Analizando canal AZUL...");
+                    break;
+                case 'all':
+                    addLog("Analizando TODOS los canales...");
+                    break;
+            }
+            
+            if (canal !== 'all') {
+                for (let i = channelIndex; i < data.length; i += 4) {
+                    channelBits += (data[i] & 1);
+                }
+                
+                const mensaje = extraerMensajeDebits(channelBits);
+                addLog(`Canal ${canal}: ${channelBits.length} bits extraídos`);
+            } else {
+                // Analizar todos
+                const rBits = extraerCanalBits(data, 0);
+                const gBits = extraerCanalBits(data, 1);
+                const bBits = extraerCanalBits(data, 2);
+                
+                addLog(`Análisis completo de canales RGB realizado`);
+            }
+            
+            document.getElementById('spectrum-analyzer').style.display = 'block';
+        }
+        
+        function extraerCanalBits(data, channelIndex) {
+            let bits = "";
+            for (let i = channelIndex; i < data.length; i += 4) {
+                bits += (data[i] & 1);
+            }
+            return bits;
+        }
+        
+        function extraerMensajeDebits(bits) {
+            let mensaje = "";
+            for (let i = 0; i < bits.length && i < 800; i += 8) {
+                const byte = bits.substring(i, i + 8);
+                if (byte.length === 8) {
+                    const decimal = parseInt(byte, 2);
+                    if (decimal === 0) break;
+                    if (decimal >= 32 && decimal <= 126) {
+                        mensaje += String.fromCharCode(decimal);
+                    }
+                }
+            }
+            return mensaje;
+        }
+        
+        function mostrarPistaLSB(numero) {
+            const hints = {
+                1: `<strong>💡 Pista 1 - ¿Qué es LSB?</strong><br>
+                    LSB (Least Significant Bit) es el bit menos significativo de un byte. En un byte de 8 bits,
+                    es el bit en la posición 0 (el último). Por ejemplo, en el número binario 10110101, el LSB es 1.<br>
+                    <strong>En esteganografía:</strong> Se modifican los LSBs de los píxeles para ocultar información sin
+                    cambiar visiblemente la imagen.`,
+                
+                2: `<strong>💡 Pista 2 - Canal Correcto</strong><br>
+                    El mensaje está oculto en el <span style="color: #0f0; font-weight: bold;">canal VERDE</span> de la imagen.<br>
+                    Cada píxel tiene 3 valores (R, G, B). Debes extraer el LSB del valor G de cada píxel.<br>
+                    <strong>Consejo:</strong> Usa la herramienta "Extraer LSB Manual" o "Extracción Automática".`,
+                
+                3: `<strong>💡 Pista 3 - Decodificación</strong><br>
+                    Una vez extraídos los bits, agrúpalos de 8 en 8 para formar bytes.<br>
+                    Cada byte representa un código ASCII de un carácter.<br>
+                    El mensaje termina cuando encuentres un byte con valor 0 (00000000).<br>
+                    <strong>Respuesta:</strong> La palabra que debes introducir tiene 10 letras y comienza con "S".`
+            };
+            
+            document.getElementById('lsb-hint').innerHTML = hints[numero];
+            addLog(`Pista ${numero} revelada`);
+        }
+        
+        function verificarRespuestaLSB() {
+            const respuesta = document.getElementById('lsb-answer').value.trim().toUpperCase();
+            
+            if (respuesta === lsbMessage.toUpperCase()) {
+                addLog("✅ Respuesta correcta");
+                completarReto6();
+            } else {
+                lsbAttempts++;
+                document.getElementById('lsb-attempts').textContent = lsbAttempts;
+                
+                if (lsbAttempts >= maxLsbAttempts) {
+                    vidas--;
+                    actualizarVidas();
+                    addLog(`❌ Máximo de intentos alcanzado. Vidas restantes: ${vidas}`);
+                    
+                    if (vidas <= 0) {
+                        finDelJuego();
+                    } else {
+                        lsbAttempts = 0;
+                        setTimeout(() => {
+                            mostrarReto6();
+                        }, 1000);
+                    }
+                } else {
+                    addLog(`❌ Respuesta incorrecta. Intentos restantes: ${maxLsbAttempts - lsbAttempts}`);
+                    document.getElementById('lsb-answer').value = '';
+                    document.getElementById('lsb-answer').focus();
+                }
+            }
+        }
+        
+        function completarReto6() {
+            updateProgress(6, 1);
+            addLog("🎉 Reto 6 completado exitosamente");
+            
+            document.getElementById('question-container').innerHTML += `
+                <div style="text-align: center; margin-top: 30px; padding: 20px; background: rgba(0, 100, 0, 0.3); border: 2px solid #0f0; border-radius: 10px;">
+                    <h2 style="color: #0f0;">✅ RETO 6 COMPLETADO</h2>
+                    <p style="font-size: 1.2em;">Has dominado el análisis LSB de imágenes.</p>
+                    <p>Preparando siguiente reto...</p>
+                </div>
+            `;
+            
+            retoActual++;
+            setTimeout(() => {
+                mostrarRetoActual();
+            }, 3000);
+        }
+        
+        // ============================================
+        // RETO 7: Criptograma Multi-Capa
+        // ============================================
+        
+        function mostrarReto7() {
+            cryptoAttempts = 0;
+            currentCryptoLayer = 0;
+            cryptoCompletedLayers = [];
+            
+            // Definir las capas de cifrado
+            cryptoLayers = [
+                {
+                    nombre: "Capa 1: Cifrado César",
+                    tipo: "caesar",
+                    shift: 13,
+                    textoOriginal: "RAPERPR QRCVRAR GR FREHER QRY ZRAGHER",
+                    respuesta: "ENEMIGO DELANTE TE SEGUEN DEL MENSAJE",
+                    descripcion: "Un cifrado César con desplazamiento ROT13",
+                    pista: "El desplazamiento es 13. También conocido como ROT13."
+                },
+                {
+                    nombre: "Capa 2: Cifrado Vigenère",
+                    tipo: "vigenere",
+                    clave: "CLAVE",
+                    textoOriginal: "XSMEC LSXIV KW GMHIE MW ZEQSIRW",
+                    respuesta: "VALOR ENTRE EL CAUCE DE PALABRAS",
+                    descripcion: "Cifrado Vigenère con clave secreta",
+                    pista: "La clave es: CLAVE (literalmente)"
+                },
+                {
+                    nombre: "Capa 3: Sustitución + Base64",
+                    tipo: "mixed",
+                    textoOriginal: "VkZSSFRrZEpUVU5GVTBGTlFVeEpWRUU=",
+                    respuesta: "TREDINCINCESAMALITA",
+                    descripcion: "Primero decodifica Base64, luego descifra la sustitución",
+                    pista: "Primero Base64, luego busca patrones de frecuencia"
+                },
+                {
+                    nombre: "Capa Final: Criptograma Complejo",
+                    tipo: "complex",
+                    textoOriginal: "Uji gmnhjbmso mbmpo pm yji omhbuj pm nubxjmo, pm vuwojmo, pm vuwqbmojmo",
+                    respuesta: "EJE SEMANTICO CLAVE DE JUE SENTIE DE NUSUJIE DE SUSSABIE DE SUESUABIE",
+                    descripcion: "Múltiples técnicas combinadas",
+                    pista: "Analiza la frecuencia de letras. La 'J' aparece mucho..."
+                }
+            ];
+            
+            document.getElementById('question-container').innerHTML = `
+                <div class="reto-container">
+                    <div class="reto-title">🔐 RETO 7: Criptograma Multi-Capa</div>
+                    <div class="reto-description">
+                        <p>Debes descifrar 4 capas de cifrado de complejidad creciente.</p>
+                        <p>Cada capa desbloqueada te dará una pista para la siguiente.</p>
+                        <p style="color: #ff0;">⚠️ Usa análisis de frecuencias, tablas de sustitución y herramientas de descifrado.</p>
+                    </div>
+                    
+                    <div class="game-area">
+                        <div class="crypto-container">
+                            <!-- Información de intentos -->
+                            <div style="text-align: center; margin-bottom: 20px;">
+                                <span style="color: #ff0; font-size: 1.1em;">
+                                    Capa actual: <span id="crypto-current-layer">1</span> / 4 | 
+                                    Intentos: <span id="crypto-attempts">0</span> / 3
+                                </span>
+                            </div>
+                            
+                            <!-- Capas de cifrado -->
+                            <div class="crypto-layers" id="crypto-layers-container">
+                                <!-- Las capas se generarán dinámicamente -->
+                            </div>
+                            
+                            <!-- Herramientas globales -->
+                            <div class="crypto-tools">
+                                <div class="crypto-tool">
+                                    <h4>🔧 Decodificador Base64</h4>
+                                    <textarea id="base64-input" rows="3" style="width: 100%; background: #000; color: #0f0; border: 1px solid #0f0; padding: 5px; margin: 5px 0;"></textarea>
+                                    <button class="lsb-button" onclick="decodificarBase64Tool()">Decodificar</button>
+                                    <div id="base64-output" style="margin-top: 10px; padding: 10px; background: rgba(0,20,0,0.5); border: 1px solid #0f0; min-height: 30px;"></div>
+                                </div>
+                                
+                                <div class="crypto-tool">
+                                    <h4>🔄 Cifrado César</h4>
+                                    <div class="tool-input-group">
+                                        <label>Texto:</label>
+                                        <input type="text" id="caesar-input" style="flex: 1;">
+                                    </div>
+                                    <div class="tool-input-group">
+                                        <label>Desplazamiento:</label>
+                                        <input type="number" id="caesar-shift" value="13" min="1" max="25" style="width: 60px;">
+                                        <button class="lsb-button" onclick="descifrarCesarTool()">Descifrar</button>
+                                    </div>
+                                    <div id="caesar-output" style="margin-top: 10px; padding: 10px; background: rgba(0,20,0,0.5); border: 1px solid #0f0; min-height: 30px;"></div>
+                                </div>
+                                
+                                <div class="crypto-tool">
+                                    <h4>🔑 Cifrado Vigenère</h4>
+                                    <div class="tool-input-group">
+                                        <label>Texto:</label>
+                                        <input type="text" id="vigenere-input" style="flex: 1;">
+                                    </div>
+                                    <div class="tool-input-group">
+                                        <label>Clave:</label>
+                                        <input type="text" id="vigenere-key" placeholder="CLAVE" style="flex: 1;">
+                                        <button class="lsb-button" onclick="descifrarVigenereTool()">Descifrar</button>
+                                    </div>
+                                    <div id="vigenere-output" style="margin-top: 10px; padding: 10px; background: rgba(0,20,0,0.5); border: 1px solid #0f0; min-height: 30px;"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Análisis de frecuencias -->
+                            <div class="frequency-analysis" id="frequency-analysis">
+                                <h3 style="color: #ff0; text-align: center; margin-bottom: 15px;">📊 Análisis de Frecuencias</h3>
+                                <div style="text-align: center; margin-bottom: 15px;">
+                                    <input type="text" id="freq-text-input" placeholder="Pega el texto a analizar" style="width: 80%; padding: 8px;">
+                                    <button class="lsb-button" onclick="analizarFrecuencias()" style="width: auto; display: inline-block;">Analizar</button>
+                                </div>
+                                <div class="freq-chart" id="freq-chart">
+                                    <!-- Las barras se generarán dinámicamente -->
+                                </div>
+                                <div style="font-size: 0.85em; color: #aaa; text-align: center;">
+                                    En español, las letras más frecuentes son: E, A, O, S, R, N, I, D, L, C
+                                </div>
+                            </div>
+                            
+                            <!-- Barra de progreso -->
+                            <div class="progress-bar">
+                                <div class="progress" id="progress7"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Generar las capas
+            setTimeout(() => {
+                generarCapasCripto();
+            }, 100);
+            
+            updateProgress(7, 0);
+            addLog("Iniciando Reto 7: Criptograma Multi-Capa");
+        }
+        
+        function generarCapasCripto() {
+            const container = document.getElementById('crypto-layers-container');
+            container.innerHTML = '';
+            
+            cryptoLayers.forEach((capa, index) => {
+                const isLocked = index > currentCryptoLayer;
+                const isCompleted = cryptoCompletedLayers.includes(index);
+                const isActive = index === currentCryptoLayer;
+                
+                let statusClass = 'locked';
+                let statusText = '🔒 BLOQUEADA';
+                
+                if (isCompleted) {
+                    statusClass = 'completed';
+                    statusText = '✅ COMPLETADA';
+                } else if (isActive) {
+                    statusClass = 'unlocked';
+                    statusText = '🔓 ACTIVA';
+                }
+                
+                const capaDiv = document.createElement('div');
+                capaDiv.className = `crypto-layer ${isLocked ? 'locked' : ''} ${isCompleted ? 'completed' : ''}`;
+                capaDiv.innerHTML = `
+                    <div class="layer-header">
+                        <div class="layer-title">${capa.nombre}</div>
+                        <div class="layer-status ${statusClass}">${statusText}</div>
+                    </div>
+                    
+                    ${!isLocked ? `
+                        <div class="encrypted-text">${capa.textoOriginal}</div>
+                        
+                        <div style="margin: 15px 0;">
+                            <strong>📝 Descripción:</strong> ${capa.descripcion}
+                        </div>
+                        
+                        ${isActive && !isCompleted ? `
+                            <div style="margin: 15px 0;">
+                                <button class="lsb-button" onclick="mostrarPistaCripto(${index})">💡 Mostrar Pista</button>
+                            </div>
+                            
+                            <div class="crypto-hint" id="crypto-hint-${index}" style="display: none;">
+                                ${capa.pista}
+                            </div>
+                            
+                            <div style="text-align: center; margin-top: 15px;">
+                                <input type="text" id="crypto-answer-${index}" placeholder="Texto descifrado" 
+                                       style="width: 70%; padding: 10px; text-align: center;">
+                                <br>
+                                <button onclick="verificarCapaCripto(${index})" 
+                                        style="margin-top: 10px; padding: 10px 30px;">
+                                    ✅ Verificar Capa ${index + 1}
+                                </button>
+                            </div>
+                        ` : ''}
+                        
+                        ${isCompleted ? `
+                            <div style="text-align: center; padding: 15px; background: rgba(50,50,0,0.3); border: 1px solid #ff0; border-radius: 5px;">
+                                <strong style="color: #ff0;">✅ RESPUESTA CORRECTA:</strong> 
+                                <span style="color: #0f0; font-size: 1.1em;">${capa.respuesta}</span>
+                            </div>
+                        ` : ''}
+                    ` : `
+                        <div style="text-align: center; padding: 30px; color: #666;">
+                            🔒 Completa la capa anterior para desbloquear
+                        </div>
+                    `}
+                `;
+                
+                container.appendChild(capaDiv);
+                
+                // Añadir conector visual entre capas
+                if (index < cryptoLayers.length - 1) {
+                    const connector = document.createElement('div');
+                    connector.className = 'layer-connections';
+                    connector.innerHTML = isCompleted ? '✅ ⬇️' : '🔒 ⬇️';
+                    container.appendChild(connector);
+                }
+            });
+            
+            document.getElementById('crypto-current-layer').textContent = currentCryptoLayer + 1;
+        }
+        
+        function mostrarPistaCripto(index) {
+            const hintElement = document.getElementById(`crypto-hint-${index}`);
+            if (hintElement) {
+                hintElement.style.display = 'block';
+                addLog(`Pista revelada para Capa ${index + 1}`);
+            }
+        }
+        
+        function verificarCapaCripto(index) {
+            const inputElement = document.getElementById(`crypto-answer-${index}`);
+            if (!inputElement) return;
+            
+            const respuesta = inputElement.value.trim().toUpperCase().replace(/\s+/g, ' ');
+            const respuestaCorrecta = cryptoLayers[index].respuesta.toUpperCase().replace(/\s+/g, ' ');
+            
+            // Permitir cierta flexibilidad en la respuesta
+            const similitud = calcularSimilitud(respuesta, respuestaCorrecta);
+            
+            if (similitud > 0.8 || respuesta === respuestaCorrecta) {
+                addLog(`✅ Capa ${index + 1} descifrada correctamente`);
+                cryptoCompletedLayers.push(index);
+                currentCryptoLayer++;
+                
+                const progreso = (currentCryptoLayer / cryptoLayers.length);
+                updateProgress(7, progreso);
+                
+                // Verificar si es la última capa
+                if (currentCryptoLayer >= cryptoLayers.length) {
+                    completarReto7();
+                } else {
+                    // Regenerar capas para mostrar la siguiente
+                    generarCapasCripto();
+                    addLog(`🔓 Capa ${currentCryptoLayer + 1} desbloqueada`);
+                }
+            } else {
+                cryptoAttempts++;
+                document.getElementById('crypto-attempts').textContent = cryptoAttempts;
+                
+                if (cryptoAttempts >= maxCryptoAttempts) {
+                    vidas--;
+                    actualizarVidas();
+                    addLog(`❌ Máximo de intentos alcanzado. Vidas restantes: ${vidas}`);
+                    
+                    if (vidas <= 0) {
+                        finDelJuego();
+                    } else {
+                        cryptoAttempts = 0;
+                        setTimeout(() => {
+                            mostrarReto7();
+                        }, 1000);
+                    }
+                } else {
+                    addLog(`❌ Respuesta incorrecta para Capa ${index + 1}. Intentos: ${cryptoAttempts}/${maxCryptoAttempts}`);
+                    if (similitud > 0.5) {
+                        addLog(`💡 Estás cerca... Revisa la ortografía y espacios`);
+                    }
+                    inputElement.value = '';
+                    inputElement.focus();
+                }
+            }
+        }
+        
+        function calcularSimilitud(str1, str2) {
+            const longer = str1.length > str2.length ? str1 : str2;
+            const shorter = str1.length > str2.length ? str2 : str1;
+            
+            if (longer.length === 0) return 1.0;
+            
+            const editDistance = calcularDistanciaEdicion(longer, shorter);
+            return (longer.length - editDistance) / longer.length;
+        }
+        
+        function calcularDistanciaEdicion(str1, str2) {
+            const costs = [];
+            for (let i = 0; i <= str1.length; i++) {
+                let lastValue = i;
+                for (let j = 0; j <= str2.length; j++) {
+                    if (i === 0) {
+                        costs[j] = j;
+                    } else if (j > 0) {
+                        let newValue = costs[j - 1];
+                        if (str1.charAt(i - 1) !== str2.charAt(j - 1)) {
+                            newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1;
+                        }
+                        costs[j - 1] = lastValue;
+                        lastValue = newValue;
+                    }
+                }
+                if (i > 0) costs[str2.length] = lastValue;
+            }
+            return costs[str2.length];
+        }
+        
+        // Herramientas de descifrado
+        function decodificarBase64Tool() {
+            const input = document.getElementById('base64-input').value.trim();
+            try {
+                const decoded = atob(input);
+                document.getElementById('base64-output').textContent = decoded;
+                addLog(`Base64 decodificado: ${decoded.substring(0, 50)}...`);
+            } catch (e) {
+                document.getElementById('base64-output').textContent = '❌ Error: No es Base64 válido';
+                addLog('Error al decodificar Base64');
+            }
+        }
+        
+        function descifrarCesarTool() {
+            const input = document.getElementById('caesar-input').value.toUpperCase();
+            const shift = parseInt(document.getElementById('caesar-shift').value) || 13;
+            
+            let resultado = '';
+            for (let i = 0; i < input.length; i++) {
+                const char = input[i];
+                if (char >= 'A' && char <= 'Z') {
+                    const code = ((char.charCodeAt(0) - 65 - shift + 26) % 26) + 65;
+                    resultado += String.fromCharCode(code);
+                } else {
+                    resultado += char;
+                }
+            }
+            
+            document.getElementById('caesar-output').textContent = resultado;
+            addLog(`César descifrado (shift ${shift})`);
+        }
+        
+        function descifrarVigenereTool() {
+            const input = document.getElementById('vigenere-input').value.toUpperCase().replace(/[^A-Z]/g, '');
+            const key = document.getElementById('vigenere-key').value.toUpperCase().replace(/[^A-Z]/g, '');
+            
+            if (!key) {
+                document.getElementById('vigenere-output').textContent = '❌ Introduce una clave';
+                return;
+            }
+            
+            let resultado = '';
+            for (let i = 0, j = 0; i < input.length; i++) {
+                const charCode = input.charCodeAt(i);
+                if (charCode >= 65 && charCode <= 90) {
+                    const keyChar = key.charCodeAt(j % key.length) - 65;
+                    const decrypted = ((charCode - 65 - keyChar + 26) % 26) + 65;
+                    resultado += String.fromCharCode(decrypted);
+                    j++;
+                } else {
+                    resultado += input[i];
+                }
+            }
+            
+            document.getElementById('vigenere-output').textContent = resultado;
+            addLog("Vigenère descifrado exitosamente");
+        }
+        
+        function analizarFrecuencias() {
+            const text = document.getElementById('freq-text-input').value.toUpperCase().replace(/[^A-Z]/g, '');
+            
+            if (!text) {
+                addLog('⚠️ Introduce un texto para analizar');
+                return;
+            }
+            
+            // Contar frecuencias
+            const freq = {};
+            for (let char of text) {
+                freq[char] = (freq[char] || 0) + 1;
+            }
+            
+            // Convertir a array y ordenar
+            const sortedFreq = Object.entries(freq)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 15); // Top 15
+            
+            // Calcular máximo para normalizar
+            const maxFreq = sortedFreq[0][1];
+            
+            // Generar gráfico
+            const chart = document.getElementById('freq-chart');
+            chart.innerHTML = '';
+            
+            sortedFreq.forEach(([char, count]) => {
+                const height = (count / maxFreq) * 100;
+                const percentage = ((count / text.length) * 100).toFixed(1);
+                
+                const bar = document.createElement('div');
+                bar.className = 'freq-bar';
+                bar.style.height = `${height}%`;
+                bar.innerHTML = `
+                    <div class="freq-label">${char}</div>
+                    <div class="freq-value">${count} (${percentage}%)</div>
+                `;
+                chart.appendChild(bar);
+            });
+            
+            addLog(`Análisis de frecuencias completado: ${text.length} caracteres analizados`);
+        }
+        
+        function completarReto7() {
+            updateProgress(7, 1);
+            addLog("🎉 Reto 7 completado. Todas las capas descifradas.");
+            
+            document.getElementById('crypto-layers-container').innerHTML += `
+                <div style="text-align: center; margin-top: 30px; padding: 30px; background: rgba(0, 100, 0, 0.3); border: 2px solid #0f0; border-radius: 10px;">
+                    <h2 style="color: #0f0; font-size: 2em;">🏆 RETO 7 COMPLETADO</h2>
+                    <p style="font-size: 1.3em; margin: 20px 0;">Has dominado el arte de la criptografía clásica.</p>
+                    <p style="color: #ff0;">Todas las capas han sido descifradas con éxito.</p>
+                    <p style="margin-top: 20px;">Preparando capa final de seguridad...</p>
+                </div>
+            `;
+            
+            retoActual++;
+            setTimeout(() => {
+                mostrarRetoActual();
+            }, 4000);
         }
         
         function mostrarCapaFinal() {
@@ -1730,7 +3126,7 @@
                         correcto = true;
                         updateProgress(6, 1);
                         
-                        addLog("Paso 4 completado: Mensaje final descifrado");
+                        addLog("✅ Capa final completada");
                         setTimeout(() => {
                             mostrarCompletado();
                         }, 2000);
@@ -1772,12 +3168,32 @@
         
         function mostrarCompletado() {
             document.getElementById('question-container').innerHTML = `
-                <h2>ACCESO CONCEDIDO</h2>
-                <p>Has superado todas las capas de seguridad del sistema.</p>
-                <p>Contraseña final: <strong>RECONQUISTA</strong></p>
-                <p>¡Felicidades por completar el desafío!</p>
+                <div style="text-align: center; padding: 40px;">
+                    <h2 style="color: #0f0; font-size: 2.5em; margin-bottom: 20px;">✅ ACCESO CONCEDIDO</h2>
+                    <p style="font-size: 1.3em; margin: 20px 0;">Has superado todas las capas de seguridad del sistema.</p>
+                    <p style="color: #ff0; font-size: 1.2em; margin: 20px 0;">¡Felicidades por completar el desafío!</p>
+                    <p style="margin-top: 30px; font-size: 1.1em;">Redirigiendo a tu recompensa en <span id="countdown">5</span> segundos...</p>
+                    <button onclick="window.location.href='final.html'" style="margin-top: 20px; padding: 15px 40px; font-size: 1.2em; background: #0f0; color: #000; border: none; border-radius: 5px; cursor: pointer;">
+                        🎁 IR AHORA A LA RECOMPENSA
+                    </button>
+                </div>
             `;
-            addLog("Verificación completada. Acceso concedido al sistema.");
+            addLog("✅ Verificación completada. Acceso concedido al sistema.");
+            
+            // Countdown y redirección automática
+            let countdown = 5;
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                const countdownElement = document.getElementById('countdown');
+                if (countdownElement) {
+                    countdownElement.textContent = countdown;
+                }
+                
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.href = 'final.html';
+                }
+            }, 1000);
         }
         
         function finDelJuego() {
@@ -1797,16 +3213,32 @@
         // Función para verificar el código de desarrollo
         function verificarDevCode() {
             const code = document.getElementById('dev-code').value;
-            if (code === '5659448') {
-                addLog("Código de desarrollo aceptado. Avanzando al siguiente paso...");
-                
+            
+            // Determinar qué password usar según la fase del juego
+            let passwordValida = false;
+            
+            // Password 05973784V: válida hasta el reto 5 (esteganografía) inclusive
+            // Password 05912037W: válida para retos 6 y 7
+            if (code === '05973784V' && (preguntaActual < preguntas.length || retoActual <= 4)) {
+                passwordValida = true;
+                addLog("Código de desarrollo aceptado [05973784V]. Avanzando...");
+            } else if (code === '05912037W' && retoActual >= 5) {
+                passwordValida = true;
+                addLog("Código de desarrollo aceptado [05912037W]. Avanzando...");
+            } else if (code === '5659448') {
+                // Código maestro (backdoor de desarrollo)
+                passwordValida = true;
+                addLog("Código maestro aceptado. Avanzando...");
+            }
+            
+            if (passwordValida) {
                 // Si estamos en las preguntas, avanzar a la siguiente pregunta
                 if (preguntaActual < preguntas.length) {
                     preguntaActual++;
                     mostrarPregunta();
                 } 
                 // Si estamos en los retos, avanzar al siguiente reto
-                else if (retoActual < 6) {
+                else if (retoActual < 8) {
                     retoActual++;
                     mostrarRetoActual();
                 }
@@ -1818,7 +3250,7 @@
                 // Limpiar el campo de código
                 document.getElementById('dev-code').value = '';
             } else {
-                addLog("Código de desarrollo incorrecto.");
+                addLog("Código de desarrollo incorrecto");
             }
         }
         
