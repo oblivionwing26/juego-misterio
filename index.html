@@ -2582,20 +2582,20 @@
                     pista: "La clave es: CLAVE (literalmente)"
                 },
                 {
-                    nombre: "Capa 3: Sustitución + Base64",
-                    tipo: "mixed",
-                    textoOriginal: "VkZSSFRrZEpUVU5GVTBGTlFVeEpWRUU=",
-                    respuesta: "TREDINCINCESAMALITA",
-                    descripcion: "Primero decodifica Base64, luego descifra la sustitución",
-                    pista: "Primero Base64, luego busca patrones de frecuencia"
+                    nombre: "Capa 3: Base64",
+                    tipo: "base64",
+                    textoOriginal: "U29sbyBxdWVkYSB1bmEsIGFuaW1v",
+                    respuesta: "SOLO QUEDA UNA, ANIMO",
+                    descripcion: "Texto codificado en Base64",
+                    pista: "Decodifica directamente desde Base64 a texto"
                 },
                 {
-                    nombre: "Capa Final: Criptograma Complejo",
-                    tipo: "complex",
-                    textoOriginal: "Uji gmnhjbmso mbmpo pm yji omhbuj pm nubxjmo, pm vuwojmo, pm vuwqbmojmo",
-                    respuesta: "EJE SEMANTICO CLAVE DE JUE SENTIE DE NUSUJIE DE SUSSABIE DE SUESUABIE",
-                    descripcion: "Múltiples técnicas combinadas",
-                    pista: "Analiza la frecuencia de letras. La 'J' aparece mucho..."
+                    nombre: "Capa Final: Cifrado César ROT7",
+                    tipo: "caesar_final",
+                    textoOriginal: "JVUZLNBPKV, SV OHZ JVTWSLAOHKV, HUPTV LU LS ZPNBPLUAL YLAV",
+                    respuesta: "CONSEGUIDO, LO HAS COMPLETADO, ANIMO EN EL SIGUIENTE RETO",
+                    descripcion: "Cifrado César con desplazamiento secreto",
+                    pista: "Prueba diferentes desplazamientos. El desplazamiento es 7 (ROT7)."
                 }
             ];
             
@@ -2621,59 +2621,6 @@
                             <!-- Capas de cifrado -->
                             <div class="crypto-layers" id="crypto-layers-container">
                                 <!-- Las capas se generarán dinámicamente -->
-                            </div>
-                            
-                            <!-- Herramientas globales -->
-                            <div class="crypto-tools">
-                                <div class="crypto-tool">
-                                    <h4>🔧 Decodificador Base64</h4>
-                                    <textarea id="base64-input" rows="3" style="width: 100%; background: #000; color: #0f0; border: 1px solid #0f0; padding: 5px; margin: 5px 0;"></textarea>
-                                    <button class="lsb-button" onclick="decodificarBase64Tool()">Decodificar</button>
-                                    <div id="base64-output" style="margin-top: 10px; padding: 10px; background: rgba(0,20,0,0.5); border: 1px solid #0f0; min-height: 30px;"></div>
-                                </div>
-                                
-                                <div class="crypto-tool">
-                                    <h4>🔄 Cifrado César</h4>
-                                    <div class="tool-input-group">
-                                        <label>Texto:</label>
-                                        <input type="text" id="caesar-input" style="flex: 1;">
-                                    </div>
-                                    <div class="tool-input-group">
-                                        <label>Desplazamiento:</label>
-                                        <input type="number" id="caesar-shift" value="13" min="1" max="25" style="width: 60px;">
-                                        <button class="lsb-button" onclick="descifrarCesarTool()">Descifrar</button>
-                                    </div>
-                                    <div id="caesar-output" style="margin-top: 10px; padding: 10px; background: rgba(0,20,0,0.5); border: 1px solid #0f0; min-height: 30px;"></div>
-                                </div>
-                                
-                                <div class="crypto-tool">
-                                    <h4>🔑 Cifrado Vigenère</h4>
-                                    <div class="tool-input-group">
-                                        <label>Texto:</label>
-                                        <input type="text" id="vigenere-input" style="flex: 1;">
-                                    </div>
-                                    <div class="tool-input-group">
-                                        <label>Clave:</label>
-                                        <input type="text" id="vigenere-key" placeholder="CLAVE" style="flex: 1;">
-                                        <button class="lsb-button" onclick="descifrarVigenereTool()">Descifrar</button>
-                                    </div>
-                                    <div id="vigenere-output" style="margin-top: 10px; padding: 10px; background: rgba(0,20,0,0.5); border: 1px solid #0f0; min-height: 30px;"></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Análisis de frecuencias -->
-                            <div class="frequency-analysis" id="frequency-analysis">
-                                <h3 style="color: #ff0; text-align: center; margin-bottom: 15px;">📊 Análisis de Frecuencias</h3>
-                                <div style="text-align: center; margin-bottom: 15px;">
-                                    <input type="text" id="freq-text-input" placeholder="Pega el texto a analizar" style="width: 80%; padding: 8px;">
-                                    <button class="lsb-button" onclick="analizarFrecuencias()" style="width: auto; display: inline-block;">Analizar</button>
-                                </div>
-                                <div class="freq-chart" id="freq-chart">
-                                    <!-- Las barras se generarán dinámicamente -->
-                                </div>
-                                <div style="font-size: 0.85em; color: #aaa; text-align: center;">
-                                    En español, las letras más frecuentes son: E, A, O, S, R, N, I, D, L, C
-                                </div>
                             </div>
                             
                             <!-- Barra de progreso -->
