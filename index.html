@@ -2940,8 +2940,8 @@
             securityStep = 1;
             securityAttempts = 0;
             
-            // Mensaje cifrado final
-            securityMessage = "535441524c4947485420435245505455444f";
+            // Mensaje cifrado final - HEX correcto: "STARLIGHT CREPTUDO" 
+            securityMessage = "4D5559204249454E2050414E5445524954412C20534947554520415349";
             
             document.getElementById('question-container').innerHTML = `
                 <div class="reto-container">
@@ -2996,11 +2996,12 @@
             
             switch(securityStep) {
                 case 1:
-                    // Paso 1: Hexadecimal a texto
-                    if (resultado === "STARLIGHT CREPTUDO") {
+                    // Paso 1: Hexadecimal a texto - Respuesta: "STARDIHT CREPTUD"
+                    if (resultado.toUpperCase() === "MUY BIEN PANTERITA, SIGUE ASI" || resultado.toUpperCase() === "STARDIGHT CREPTUD") {
                         correcto = true;
                         securityStep++;
-                        securityMessage = "U1RBUkxJR0hUIENSRVBUVURPIFRFWFRPIEZJTkFMCg==";
+                        // Base64 de "SIMULACION TEXTO CLAVE"
+                        securityMessage = "Q09OVElOVUEgTExFVkFTIERPUyBZIFFVRURBIFBPQ08=";
                         
                         document.getElementById('security-step').textContent = securityStep;
                         document.getElementById('security-text').textContent = securityMessage;
@@ -3016,27 +3017,27 @@
                     break;
                     
                 case 2:
-                    // Paso 2: Base64 a texto
-                    if (resultado === "STARLIGHT CREPTUDO TEXT OF FINAL") {
+                    // Paso 2: Base64 a texto - Respuesta: "SIMULACION TEXTO CLAVE"
+                    if (resultado.toUpperCase() === "CONTINUA LLEVAS DOS Y QUEDA POCO") {
                         correcto = true;
                         securityStep++;
-                        securityMessage = "V1hWVUdZVUJUWVJXVlVHWVVCVFZSV1ZVRllVQlRWUlc=";
+                        securityMessage = "Busca en el libro...";
                         
                         document.getElementById('security-step').textContent = securityStep;
                         document.getElementById('security-text').textContent = securityMessage;
                         document.getElementById('security-hint').innerHTML = `
-                            <strong>Paso 3:</strong> Este mensaje también está en Base64, pero necesitas una clave.
-                            <br>La clave está en el libro "Simulacros y Simulación", página 42, línea 3, palabra 5.
+                            <strong>Paso 3:</strong> La clave está en el libro "Simulacros y Simulación".
+                            <br>Página 42, línea 3, palabra 5.
                         `;
                         document.getElementById('security-result').value = '';
                         
                         // Mostrar extracto del libro
                         const bookExcerpt = `Página 42:
-                        Línea 1: La simulación no es una copia de lo real, sino que reemplaza a lo real.
-                        Línea 2: En la era de la simulación, los signos ya no remiten a nada real.
-                        Línea 3: El mapa precede al territorio y genera el territorio. La simulación es la realidad.
-                        Línea 4: Hiperrealidad es el resultado de la simulación total.
-                        Línea 5: Los modelos generan lo real sin necesidad de referentes externos.`;
+Línea 1: La simulación no es una copia de lo real, sino que reemplaza a lo real.
+Línea 2: En la era de la simulación, los signos ya no remiten a nada real.
+Línea 3: El mapa precede al territorio y genera el territorio. La simulación es la realidad.
+Línea 4: Hiperrealidad es el resultado de la simulación total.
+Línea 5: Los modelos generan lo real sin necesidad de referentes externos.`;
                         
                         document.getElementById('book-excerpt').textContent = bookExcerpt;
                         document.getElementById('book-excerpt').style.display = 'block';
@@ -3048,32 +3049,41 @@
                     break;
                     
                 case 3:
-                    // Paso 3: Base64 con clave
-                    if (resultado.toLowerCase() === "simulacion") {
+                    // Paso 3: Encontrar palabra del libro - Respuesta: "simulación"
+                    if (resultado.toLowerCase() === "simulacion" || resultado.toLowerCase() === "simulación") {
                         correcto = true;
                         securityStep++;
-                        securityMessage = "V1hWVUdZVUJUWVJXVlVHWVVCVFZSV1ZVRllVQlRWUlc=";
+                        // Base64 de "RECONQUISTA"
+                        securityMessage = "UkVDT05RVUlTVEE=";
                         
                         document.getElementById('security-step').textContent = securityStep;
                         document.getElementById('security-text').textContent = securityMessage;
                         document.getElementById('security-hint').innerHTML = `
-                            <strong>Paso 4:</strong> Usa la clave encontrada para descifrar el mensaje Base64.
-                            <br>El resultado final es la contraseña del sistema.
+                            <strong>Paso 4 (Final):</strong> Descifra este último mensaje en Base64.
+                            <br>El resultado es la contraseña final del sistema.
                         `;
                         document.getElementById('security-result').value = '';
                         updateProgress(6, 0.75);
                         
-                        addLog("Paso 3 completado: Clave encontrada");
+                        addLog("Paso 3 completado: Clave encontrada en el libro");
                     }
                     break;
                     
                 case 4:
-                    // Paso 4: Descifrar con clave
-                    if (resultado.toLowerCase() === "reconquista") {
+                    // Paso 4: Base64 final - Respuesta: "RECONQUISTA"
+                    if (resultado.toUpperCase() === "RECONQUISTA") {
                         correcto = true;
                         updateProgress(6, 1);
                         
-                        addLog("✅ Capa final completada");
+                        addLog("✅ Capa final de seguridad completada");
+                        document.getElementById('security-hint').innerHTML = `
+                            <div style="color: #0f0; font-size: 1.3em; text-align: center; margin: 20px 0;">
+                                🎉 ¡ACCESO CONCEDIDO! 🎉
+                                <br><br>
+                                Has completado todos los desafíos.
+                            </div>
+                        `;
+                        
                         setTimeout(() => {
                             mostrarCompletado();
                         }, 2000);
